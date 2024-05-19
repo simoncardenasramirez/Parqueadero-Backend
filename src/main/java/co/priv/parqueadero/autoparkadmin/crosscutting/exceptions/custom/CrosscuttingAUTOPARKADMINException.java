@@ -1,7 +1,7 @@
-package co.priv.parqueadero.autoparkadmin.crosscutting.ecxeptions.custom;
+package co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.custom;
 
-import co.priv.parqueadero.autoparkadmin.crosscutting.ecxeptions.AUTOPARKADMINException;
-import co.priv.parqueadero.autoparkadmin.crosscutting.ecxeptions.enums.Lugar;
+import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.AUTOPARKADMINException;
+import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.enums.Lugar;
 
 public final class CrosscuttingAUTOPARKADMINException extends AUTOPARKADMINException {
 

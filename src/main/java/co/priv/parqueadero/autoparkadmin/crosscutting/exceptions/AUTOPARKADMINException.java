@@ -1,6 +1,6 @@
-package co.priv.parqueadero.autoparkadmin.crosscutting.ecxeptions;
+package co.priv.parqueadero.autoparkadmin.crosscutting.exceptions;
 
-import co.priv.parqueadero.autoparkadmin.crosscutting.ecxeptions.enums.Lugar;
+import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.enums.Lugar;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.ObjectHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
 
