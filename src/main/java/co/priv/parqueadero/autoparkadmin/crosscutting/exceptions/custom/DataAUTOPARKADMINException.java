@@ -17,5 +17,15 @@ public final class DataAUTOPARKADMINException extends AUTOPARKADMINException {
 
 	}
 	
+	public DataAUTOPARKADMINException(final String mensajeTecnico,final String mensajeUsuario, Throwable excepcionRaiz) {
+		super(mensajeTecnico,mensajeUsuario,excepcionRaiz);
+
+	}
+	
+	public DataAUTOPARKADMINException(final String mensajeTecnico,final String mensajeUsuario) {
+		super(mensajeTecnico,mensajeUsuario,Lugar.DATA);
+
+	}
+	
 
 }

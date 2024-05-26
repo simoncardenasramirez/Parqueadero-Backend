@@ -29,6 +29,12 @@ public class AUTOPARKADMINException extends RuntimeException{
 		setMensajeUsuario  (mensajeUsuario);
 		setLugar (lugar);
 	}
+	
+	public AUTOPARKADMINException(String mensajeTecnico,String mensajeUsuario, Throwable excepcionRaiz) {
+		super(mensajeTecnico,excepcionRaiz);
+		setMensajeUsuario  (mensajeUsuario);
+	
+	}
 
 
 
