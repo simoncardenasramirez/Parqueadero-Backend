@@ -3,9 +3,15 @@ package co.priv.parqueadero.autoparkadmin.data.dao.factory.concrete;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.AUTOPARKADMINException;
+import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.custom.DataAUTOPARKADMINException;
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.MessageCatalogStrategy;
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.data.CodigoMensaje;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.SQLHelper;
+import co.priv.parqueadero.autoparkadmin.data.dao.entity.TipoVehiculoDAO;
+import co.priv.parqueadero.autoparkadmin.data.dao.entity.VehiculoDAO;
+import co.priv.parqueadero.autoparkadmin.data.dao.entity.concrete.SqlConnection;
+import co.priv.parqueadero.autoparkadmin.data.dao.factory.DAOFactory;
 
 
 
@@ -22,21 +28,21 @@ public final class PostgreSQLDAOFactory extends SqlConnection implements DAOFact
 		final String connectionUrl = "jdbc:sqlserver://wednesday.database.windows.net:1433;databaseName=friday;user=fridayDmlUser;password=fr1d4yus3r!";
 		try {
 			setConexion(DriverManager.getConnection(connectionUrl));
-		} catch (final PCHException excepcion) {
+		} catch (final AUTOPARKADMINException excepcion) {
 			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00002);
 			var mensajeTecnico = "Se ha presentado un problema tratando de obtener la conexión con la base de datos wednesday en el servidor de bases de datos wednesday.database.windows.net. Por favor revise la traza de errores para identificar y solucionar el problema...";
 
-			throw new DataPCHException(mensajeTecnico, mensajeUsuario, excepcion);
+			throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, excepcion);
 		} catch (final SQLException excepcion) {
 			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00002);
 			var mensajeTecnico = "Se ha presentado un problema tratando de obtener la conexión con la base de datos wednesday en el servidor de bases de datos wednesday.database.windows.net. Por favor revise la traza de errores para identificar y solucionar el problema...";
 
-			throw new DataPCHException(mensajeTecnico, mensajeUsuario, excepcion);
+			throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, excepcion);
 		} catch (final Exception excepcion) {
 			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00002);
 			var mensajeTecnico = "Se ha presentado un problema INESPERADO tratando de obtener la conexión con la base de datos wednesday en el servidor de bases de datos wednesday.database.windows.net. Por favor revise la traza de errores para identificar y solucionar el problema...";
 
-			throw new DataPCHException(mensajeTecnico, mensajeUsuario, excepcion);
+			throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, excepcion);
 		}
 	}
 
@@ -61,19 +67,31 @@ public final class PostgreSQLDAOFactory extends SqlConnection implements DAOFact
 	}
 
 	@Override
-	public PaisDAO getPaisDAO() {
-		return new PaisAzureSqlDAO(getConexion());
+	public VehiculoDAO getVehiculoDAO() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public DepartamentoDAO getDepartamentoDAO() {
-		return new DepartamentoAzureSqlDAO(getConexion());
+	public TipoVehiculoDAO getTipoVehiculoDAO() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	@Override
-	public CiudadDAO getCiudadDAO() {
-		return new CiudadAzureSqlDAO(getConexion());
-	}
+	//@Override
+	//public PaisDAO getPaisDAO() {
+	//	return new PaisAzureSqlDAO(getConexion());
+	//}
+
+	//@Override
+	//public DepartamentoDAO getDepartamentoDAO() {
+	//	return new DepartamentoAzureSqlDAO(getConexion());
+	//}
+
+	//@Override
+	//public CiudadDAO getCiudadDAO() {
+	//	return new CiudadAzureSqlDAO(getConexion());
+	//}
 	
 	
 

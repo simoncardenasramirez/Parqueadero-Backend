@@ -37,4 +37,9 @@ public class SqlConnection {
 		this.conexion = conexion;
 	}
 
+	public void abrirConexion() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

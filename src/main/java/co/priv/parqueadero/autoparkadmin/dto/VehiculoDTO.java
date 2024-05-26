@@ -5,17 +5,17 @@ import java.util.UUID;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
 
 
-public class Vehiculo {
+public class VehiculoDTO {
 	
 	private UUID id;
 	private String nombre;
 	private TipoVehiculoDTO tipoVehiculo;
 	
-	public Vehiculo() {
+	public VehiculoDTO() {
 		super();
 	}
 
-	public Vehiculo(UUID id, String nombre, TipoVehiculoDTO tipoVehiculo) {
+	public VehiculoDTO(UUID id, String nombre, TipoVehiculoDTO tipoVehiculo) {
 		super();
 		setId(id);
 		setNombre(nombre);
@@ -26,7 +26,7 @@ public class Vehiculo {
 		return id;
 	}
 
-	public Vehiculo setId(final UUID id) {
+	public VehiculoDTO setId(final UUID id) {
 		this.id = id;
 		return this;
 	}
@@ -35,7 +35,7 @@ public class Vehiculo {
 		return nombre;
 	}
 
-	public Vehiculo setNombre(final String nombre) {
+	public VehiculoDTO setNombre(final String nombre) {
 		this.nombre = TextHelper.applyTrim(nombre);
 		return this;
 	}
@@ -44,7 +44,7 @@ public class Vehiculo {
 		return tipoVehiculo;
 	}
 
-	public Vehiculo setTipoVehiculo(final TipoVehiculoDTO tipoVehiculo) {
+	public VehiculoDTO setTipoVehiculo(final TipoVehiculoDTO tipoVehiculo) {
 		this.tipoVehiculo=tipoVehiculo;
 		return this;
 	}
