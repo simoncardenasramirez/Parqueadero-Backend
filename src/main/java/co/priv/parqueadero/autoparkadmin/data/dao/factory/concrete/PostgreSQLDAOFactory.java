@@ -13,9 +13,6 @@ import co.priv.parqueadero.autoparkadmin.data.dao.entity.VehiculoDAO;
 import co.priv.parqueadero.autoparkadmin.data.dao.entity.concrete.SqlConnection;
 import co.priv.parqueadero.autoparkadmin.data.dao.factory.DAOFactory;
 
-
-
-
 public final class PostgreSQLDAOFactory extends SqlConnection implements DAOFactory {
 
 	public PostgreSQLDAOFactory() {
@@ -23,9 +20,12 @@ public final class PostgreSQLDAOFactory extends SqlConnection implements DAOFact
 		abrirConexion();
 	}
 
+
+
 	@Override
 	public void abrirConexion() {
-		final String connectionUrl = "jdbc:sqlserver://wednesday.database.windows.net:1433;databaseName=friday;user=fridayDmlUser;password=fr1d4yus3r!";
+		final String connectionUrl = "jdbc:postgresql://localhost:5432/Parqueadero?user=postgres&password=f4n2d1j9";
+		;
 		try {
 			setConexion(DriverManager.getConnection(connectionUrl));
 		} catch (final AUTOPARKADMINException excepcion) {
@@ -78,21 +78,19 @@ public final class PostgreSQLDAOFactory extends SqlConnection implements DAOFact
 		return null;
 	}
 
-	//@Override
-	//public PaisDAO getPaisDAO() {
-	//	return new PaisAzureSqlDAO(getConexion());
-	//}
+	// @Override
+	// public PaisDAO getPaisDAO() {
+	// return new PaisAzureSqlDAO(getConexion());
+	// }
 
-	//@Override
-	//public DepartamentoDAO getDepartamentoDAO() {
-	//	return new DepartamentoAzureSqlDAO(getConexion());
-	//}
+	// @Override
+	// public DepartamentoDAO getDepartamentoDAO() {
+	// return new DepartamentoAzureSqlDAO(getConexion());
+	// }
 
-	//@Override
-	//public CiudadDAO getCiudadDAO() {
-	//	return new CiudadAzureSqlDAO(getConexion());
-	//}
-	
-	
+	// @Override
+	// public CiudadDAO getCiudadDAO() {
+	// return new CiudadAzureSqlDAO(getConexion());
+	// }
 
 }
