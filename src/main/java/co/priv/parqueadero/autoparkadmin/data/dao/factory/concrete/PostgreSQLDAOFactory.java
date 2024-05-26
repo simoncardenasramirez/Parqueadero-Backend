@@ -25,7 +25,7 @@ public final class PostgreSQLDAOFactory extends SqlConnection implements DAOFact
 	@Override
 	public void abrirConexion() {
 		final String connectionUrl = "jdbc:postgresql://localhost:5432/Parqueadero?user=postgres&password=f4n2d1j9";
-		;
+	
 		try {
 			setConexion(DriverManager.getConnection(connectionUrl));
 		} catch (final AUTOPARKADMINException excepcion) {
@@ -77,20 +77,5 @@ public final class PostgreSQLDAOFactory extends SqlConnection implements DAOFact
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	// @Override
-	// public PaisDAO getPaisDAO() {
-	// return new PaisAzureSqlDAO(getConexion());
-	// }
-
-	// @Override
-	// public DepartamentoDAO getDepartamentoDAO() {
-	// return new DepartamentoAzureSqlDAO(getConexion());
-	// }
-
-	// @Override
-	// public CiudadDAO getCiudadDAO() {
-	// return new CiudadAzureSqlDAO(getConexion());
-	// }
 
 }

@@ -21,6 +21,10 @@ public class VehiculoEntity {
 		setNombre(nombre);
 		setTipoVehiculo(tipoVehiculo);
 	}
+	
+	public static final VehiculoEntity build() {
+		return new VehiculoEntity();
+	}
 
 	public UUID getId() {
 		return id;
