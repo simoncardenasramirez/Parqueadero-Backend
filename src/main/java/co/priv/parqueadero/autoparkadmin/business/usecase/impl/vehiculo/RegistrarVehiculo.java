@@ -2,15 +2,17 @@ package co.priv.parqueadero.autoparkadmin.business.usecase.impl.vehiculo;
 
 import java.util.UUID;
 
+
+
 import co.priv.parqueadero.autoparkadmin.business.domain.VehiculoDomain;
+import co.priv.parqueadero.autoparkadmin.business.usecase.UseCaseWithoutReturn;
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.custom.BusinessAUTOPARKADMINException;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.ObjectHelper;
-import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.UUIDHelper;
 import co.priv.parqueadero.autoparkadmin.data.dao.factory.DAOFactory;
 import co.priv.parqueadero.autoparkadmin.entity.VehiculoEntity;
 
-public final class RegistrarVehiculo implements FacadeWithoutReturn<VehiculoDomain> {
+public final class RegistrarVehiculo implements UseCaseWithoutReturn<VehiculoDomain> {
 
     private final DAOFactory factory;
 

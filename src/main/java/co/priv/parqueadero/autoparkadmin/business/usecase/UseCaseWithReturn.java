@@ -1,6 +1,6 @@
-package co.priv.parqueadero.autoparkadmin.business.usecase.impl.vehiculo;
+package co.priv.parqueadero.autoparkadmin.business.usecase;
 
-public interface FacadeWithReturn<T, K> {
+public interface UseCaseWithReturn<T, K> {
 	
 	K execute(T dto);
 
