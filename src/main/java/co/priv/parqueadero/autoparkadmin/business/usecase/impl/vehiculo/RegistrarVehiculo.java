@@ -32,7 +32,7 @@ public final class RegistrarVehiculo implements UseCaseWithoutReturn<VehiculoDom
         // 1. Validar que los casos de uso sean correctos a nivel de tipo de dato, longitud, obligatoriedad, formato, rango, etc...
 
         // 2. Validar que no exista otro vehículo con la misma matrícula
-        validarVehiculoMismaMatricula(data.getNombre());
+        validarVehiculoMismaMatricula(data.getMatricula());
 
         // 3. Validar que el tipo de vehículo sea válido para registrar
 
@@ -55,7 +55,7 @@ public final class RegistrarVehiculo implements UseCaseWithoutReturn<VehiculoDom
     }
 
     private final void validarVehiculoMismaMatricula(final String matricula) {
-        var vehiculoEntity = VehiculoEntity.build().setNombre(matricula);
+        var vehiculoEntity = VehiculoEntity.build().setMatricula(matricula);
         var resultados = factory.getVehiculoDAO().consultar(vehiculoEntity);
 
         if (!resultados.isEmpty()) {

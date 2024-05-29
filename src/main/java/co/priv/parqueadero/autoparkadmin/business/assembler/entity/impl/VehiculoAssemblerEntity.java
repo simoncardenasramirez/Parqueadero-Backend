@@ -27,14 +27,14 @@ public class VehiculoAssemblerEntity implements AssemblerEntity<VehiculoDomain, 
 	public VehiculoDomain toDomain(VehiculoEntity data) {
 		var vehiculoEntityTmp = getObjectHelper().getDefaultValue(data, VehiculoEntity.build());
 		var tipoVehiculoDomain = tipoVehiculoAssembler.toDomain(vehiculoEntityTmp.getTipoVehiculo());
-		return VehiculoDomain.build(vehiculoEntityTmp.getId(),vehiculoEntityTmp.getNombre(),tipoVehiculoDomain);
+		return VehiculoDomain.build(vehiculoEntityTmp.getId(),vehiculoEntityTmp.getMatricula(),tipoVehiculoDomain);
 	}
 
 	@Override
 	public VehiculoEntity toEntity(VehiculoDomain domain) {
 		var vehiculoDomainTmp = getObjectHelper().getDefaultValue(domain, VehiculoDomain.build());
 		var tipoVehiculoEntity = tipoVehiculoAssembler.toEntity(vehiculoDomainTmp.getTipoVehiculo());
-		return VehiculoEntity.build().setId(vehiculoDomainTmp.getId()).setNombre(vehiculoDomainTmp.getNombre()).setTipoVehiculo(tipoVehiculoEntity);
+		return VehiculoEntity.build().setId(vehiculoDomainTmp.getId()).setMatricula(vehiculoDomainTmp.getMatricula()).setTipoVehiculo(tipoVehiculoEntity);
 	}
 
 	@Override

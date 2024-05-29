@@ -1,6 +1,6 @@
 package co.priv.parqueadero.autoparkadmin.dto;
 
-import java.util.UUID;
+import java.util.UUID; 
 
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
 
@@ -8,7 +8,7 @@ import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
 public class VehiculoDTO {
 	
 	private UUID id;
-	private String nombre;
+	private String matricula;
 	private TipoVehiculoDTO tipoVehiculo;
 	
 	public VehiculoDTO() {
@@ -19,10 +19,10 @@ public class VehiculoDTO {
 		return new VehiculoDTO();
 	}
 
-	public VehiculoDTO(UUID id, String nombre, TipoVehiculoDTO tipoVehiculo) {
+	public VehiculoDTO(UUID id, String matricula, TipoVehiculoDTO tipoVehiculo) {
 		super();
 		setId(id);
-		setNombre(nombre);
+		setMatricula(matricula);
 		setTipoVehiculo(tipoVehiculo);
 	}
 
@@ -35,12 +35,12 @@ public class VehiculoDTO {
 		return this;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getMatricula() {
+		return matricula;
 	}
 
-	public VehiculoDTO setNombre(final String nombre) {
-		this.nombre = TextHelper.applyTrim(nombre);
+	public VehiculoDTO setMatricula(final String matricula) {
+		this.matricula = TextHelper.applyTrim(matricula);
 		return this;
 	}
 

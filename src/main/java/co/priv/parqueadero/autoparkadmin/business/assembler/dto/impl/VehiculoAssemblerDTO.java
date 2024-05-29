@@ -27,14 +27,14 @@ public class VehiculoAssemblerDTO implements AssemblerDTO<VehiculoDomain, Vehicu
 	public VehiculoDomain toDomain(VehiculoDTO data) {
 		var vehiculoDTOTmp = getObjectHelper().getDefaultValue(data, VehiculoDTO.build());
 		var tipoVehiculoDomain = TipoVehiculoAssembler.toDomain(vehiculoDTOTmp.getTipoVehiculo());
-		return VehiculoDomain.build(vehiculoDTOTmp.getId(),vehiculoDTOTmp.getNombre(),tipoVehiculoDomain);
+		return VehiculoDomain.build(vehiculoDTOTmp.getId(),vehiculoDTOTmp.getMatricula(),tipoVehiculoDomain);
 	}
 
 	@Override
 	public VehiculoDTO toDTO(final VehiculoDomain domain) {
 		var vehiculoDomainTmp = getObjectHelper().getDefaultValue(domain, VehiculoDomain.build());
 		var tipoVehiculoDTO = TipoVehiculoAssembler.toDTO(vehiculoDomainTmp.getTipoVehiculo());
-		return VehiculoDTO.build().setId(vehiculoDomainTmp.getId()).setNombre(vehiculoDomainTmp.getNombre()).setTipoVehiculo(tipoVehiculoDTO);
+		return VehiculoDTO.build().setId(vehiculoDomainTmp.getId()).setMatricula(vehiculoDomainTmp.getMatricula()).setTipoVehiculo(tipoVehiculoDTO);
 	}
 
 	@Override
