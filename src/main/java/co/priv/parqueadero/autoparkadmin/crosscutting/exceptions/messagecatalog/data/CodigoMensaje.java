@@ -1,6 +1,7 @@
 package co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.data;
 
 import static co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper.concatenate;
+
 import static co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper.UNDERLINE;
 
 public enum CodigoMensaje {
@@ -27,7 +28,11 @@ public enum CodigoMensaje {
 	M00020(TipoMensaje.TECNICO, CategoriaMensaje.ERROR, "00020", true),
 	M00021(TipoMensaje.TECNICO, CategoriaMensaje.ERROR, "00021", true),
 	M00022(TipoMensaje.TECNICO, CategoriaMensaje.ERROR, "00022", true),
-	M00023(TipoMensaje.USUARIO, CategoriaMensaje.ERROR, "000023", true);
+	M00023(TipoMensaje.USUARIO, CategoriaMensaje.ERROR, "000023", true),
+	M00027(TipoMensaje.USUARIO, CategoriaMensaje.ERROR, "00027", true),
+	M00030(TipoMensaje.TECNICO, CategoriaMensaje.ERROR, "00030", true),
+	M00032(TipoMensaje.USUARIO, CategoriaMensaje.ADVERTENCIA, "00032", true),
+	M00046(TipoMensaje.TECNICO, CategoriaMensaje.ERROR, "00046", true);
 	
 	
 	private TipoMensaje tipo;

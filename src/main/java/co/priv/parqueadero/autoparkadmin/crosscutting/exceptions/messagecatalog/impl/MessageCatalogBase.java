@@ -67,6 +67,14 @@ public final class MessageCatalogBase implements MessageCatalog {
 				"Se ha presentado un problema INESPERADO tratando de iniciar una transacción SQL con la fuente de información deseada..."));
 		mensajes.put(CodigoMensaje.M00023.getIdentificador(),new Mensaje(CodigoMensaje.M00023,
 				"se ha presentado un prblema tratando de crear la ciudad \"${1}\" y si el problemas contacte a el administrador ..." ));
+		mensajes.put(CodigoMensaje.M00027.getIdentificador(),new Mensaje(CodigoMensaje.M00027,
+				"Se ha presentado un problema tratando de llevar a cabo el registro de un vehículo"));
+		mensajes.put(CodigoMensaje.M00030.getIdentificador(),new Mensaje(CodigoMensaje.M00030,
+				"el DAOfactoty para registrar el vehiculo llego nulo..."));
+		mensajes.put(CodigoMensaje.M00032.getIdentificador(),new Mensaje(CodigoMensaje.M00032,
+				"Ya existe un vehículo registrado con la matrícula \"${1}\""));
+		mensajes.put(CodigoMensaje.M00046.getIdentificador(),new Mensaje(CodigoMensaje.M00046,
+				"No es posible crear el DAO deseado con una conexion cerrada"));
 		
 	}
 
