@@ -14,6 +14,10 @@ public class VehiculoDTO {
 	public VehiculoDTO() {
 		super();
 	}
+	
+	public static final VehiculoDTO build() {
+		return new VehiculoDTO();
+	}
 
 	public VehiculoDTO(UUID id, String nombre, TipoVehiculoDTO tipoVehiculo) {
 		super();
