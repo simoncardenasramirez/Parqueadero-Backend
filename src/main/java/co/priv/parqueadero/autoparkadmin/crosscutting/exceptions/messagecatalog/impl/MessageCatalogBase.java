@@ -79,6 +79,14 @@ public final class MessageCatalogBase implements MessageCatalog {
 				"Ya existe un vehículo registrado con la matrícula \"${1}\""));
 		mensajes.put(CodigoMensaje.M00046.getIdentificador(),new Mensaje(CodigoMensaje.M00046,
 				"No es posible crear el DAO deseado con una conexion cerrada"));
+		mensajes.put(CodigoMensaje.M00024.getIdentificador(),new Mensaje(CodigoMensaje.M00024,
+				"Ha ocurrido un error inesperado tratando de consultar los vehiculos"));
+		mensajes.put(CodigoMensaje.M00025.getIdentificador(),new Mensaje(CodigoMensaje.M00025,
+				"No es posible consultar los vehiculos a la base de datos por un error inesperado"));
+		mensajes.put(CodigoMensaje.M00026.getIdentificador(),new Mensaje(CodigoMensaje.M00026,
+				"No es posible registrar los vehiculos a la base de datos por un error inesperado"));
+		mensajes.put(CodigoMensaje.M00027.getIdentificador(),new Mensaje(CodigoMensaje.M00027,
+				"No es posible registrar los vehiculos a la base de datos por un error inesperado"));
 		
 	}
 
