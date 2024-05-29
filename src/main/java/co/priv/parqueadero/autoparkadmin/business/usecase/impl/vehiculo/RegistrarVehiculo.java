@@ -7,6 +7,8 @@ import java.util.UUID;
 import co.priv.parqueadero.autoparkadmin.business.domain.VehiculoDomain;
 import co.priv.parqueadero.autoparkadmin.business.usecase.UseCaseWithoutReturn;
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.custom.BusinessAUTOPARKADMINException;
+import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.MessageCatalogStrategy;
+import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.data.CodigoMensaje;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.ObjectHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.UUIDHelper;
 import co.priv.parqueadero.autoparkadmin.data.dao.factory.DAOFactory;
@@ -18,8 +20,8 @@ public final class RegistrarVehiculo implements UseCaseWithoutReturn<VehiculoDom
 
     public RegistrarVehiculo(final DAOFactory factory){
         if(ObjectHelper.getObjectHelper().isNull(factory)){
-            var mensajeUsuario = "Se ha presentado un problema tratando de llevar a cabo el registro de un vehículo";
-            var mensajeTecnico = "El DAOFactory para crear el vehículo llegó nulo...";
+			var mensajeUsuario= MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00027);
+			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00030);
             throw new BusinessAUTOPARKADMINException(mensajeTecnico, mensajeUsuario);
         }
         this.factory = factory;
@@ -57,9 +59,8 @@ public final class RegistrarVehiculo implements UseCaseWithoutReturn<VehiculoDom
         var resultados = factory.getVehiculoDAO().consultar(vehiculoEntity);
 
         if (!resultados.isEmpty()) {
-            var mensajeUsuario = "Ya existe un vehículo con la matrícula \"" + matricula + "\"";
-            var mensajeTecnico = "Vehículo duplicado encontrado con matrícula: " + matricula;
-            throw new BusinessAUTOPARKADMINException(mensajeTecnico, mensajeUsuario);
+        	var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00032);
+            throw new BusinessAUTOPARKADMINException(mensajeUsuario);
         }
     }
 
