@@ -69,6 +69,10 @@ public final class MessageCatalogBase implements MessageCatalog {
 				"se ha presentado un prblema tratando de crear la ciudad \"${1}\" y si el problemas contacte a el administrador ..." ));
 		mensajes.put(CodigoMensaje.M00027.getIdentificador(),new Mensaje(CodigoMensaje.M00027,
 				"Se ha presentado un problema tratando de llevar a cabo el registro de un vehículo"));
+		mensajes.put(CodigoMensaje.M00028.getIdentificador(),new Mensaje(CodigoMensaje.M00028,
+				"Se ha presentado un problema tratando de llevar a cabo el registro de la consulta del vehiculo"));
+		mensajes.put(CodigoMensaje.M00029.getIdentificador(),new Mensaje(CodigoMensaje.M00029,
+				"El DAOFactory para crear el registro de los vehiculos llego nulo"));
 		mensajes.put(CodigoMensaje.M00030.getIdentificador(),new Mensaje(CodigoMensaje.M00030,
 				"el DAOfactoty para registrar el vehiculo llego nulo..."));
 		mensajes.put(CodigoMensaje.M00032.getIdentificador(),new Mensaje(CodigoMensaje.M00032,

@@ -1,7 +1,7 @@
 package co.priv.parqueadero.autoparkadmin.business.usecase;
 
-public interface UseCaseWithReturn<T, K> {
+public interface UseCaseWithReturn<T,R> {
 	
-	K execute(T dto);
+	R execute(T data);
 
 }
