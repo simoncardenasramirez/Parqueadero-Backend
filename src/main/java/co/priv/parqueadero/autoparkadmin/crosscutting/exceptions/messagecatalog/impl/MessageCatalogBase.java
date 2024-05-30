@@ -99,6 +99,18 @@ public final class MessageCatalogBase implements MessageCatalog {
 				"Ha ocurrido un error inesperado tratando de consultar los tipos de vehiculos"));
 		mensajes.put(CodigoMensaje.M00040.getIdentificador(),new Mensaje(CodigoMensaje.M00040,
 				"No es posible consultar los tipos de vehiculos a la base de datos por un error inesperado"));
+		mensajes.put(CodigoMensaje.M00041.getIdentificador(),new Mensaje(CodigoMensaje.M00041,
+				"Vehículo consultado correctamente"));
+		mensajes.put(CodigoMensaje.M00042.getIdentificador(),new Mensaje(CodigoMensaje.M00042,
+				"Vehículo registrado correctamente"));
+		mensajes.put(CodigoMensaje.M00043.getIdentificador(),new Mensaje(CodigoMensaje.M00043,
+				"el vehiculo no se pudo consultar por un error inesperado"));
+		mensajes.put(CodigoMensaje.M00044.getIdentificador(),new Mensaje(CodigoMensaje.M00044,
+				"el vehiculo no se pudo registrar por un error inesperado"));
+		mensajes.put(CodigoMensaje.M00045.getIdentificador(),new Mensaje(CodigoMensaje.M00045,
+				"el tipo de vehiculo no se pudo consultar  por un error inesperado"));
+		mensajes.put(CodigoMensaje.M00047.getIdentificador(),new Mensaje(CodigoMensaje.M00047,
+				"el tipo de vehículo consultado correctamente"));
 		
 		
 	}
