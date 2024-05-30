@@ -85,14 +85,27 @@ public final class MessageCatalogBase implements MessageCatalog {
 				"No es posible consultar los vehiculos a la base de datos por un error inesperado"));
 		mensajes.put(CodigoMensaje.M00026.getIdentificador(),new Mensaje(CodigoMensaje.M00026,
 				"No es posible registrar los vehiculos a la base de datos por un error inesperado"));
-		mensajes.put(CodigoMensaje.M00027.getIdentificador(),new Mensaje(CodigoMensaje.M00027,
-				"No es posible registrar los vehiculos a la base de datos por un error inesperado"));
+		mensajes.put(CodigoMensaje.M00034.getIdentificador(),new Mensaje(CodigoMensaje.M00034,
+				"No es posible registrar el vehiculo ..."));
+		mensajes.put(CodigoMensaje.M00035.getIdentificador(),new Mensaje(CodigoMensaje.M00035,
+				"No es posible registrar el vehiculo por un error inesperado ..."));
+		mensajes.put(CodigoMensaje.M00036.getIdentificador(),new Mensaje(CodigoMensaje.M00036,
+				"No es posible consultar los vehiculos a la base de datos por un Excepcion de tipo SQLException"));
+		mensajes.put(CodigoMensaje.M00037.getIdentificador(),new Mensaje(CodigoMensaje.M00037,
+				"Ha ocurrido un error inesperado tratando de consultar los tipos de vehiculos"));
+		mensajes.put(CodigoMensaje.M00038.getIdentificador(),new Mensaje(CodigoMensaje.M00038,
+				"No es posible consultar los vehiculos a la base de datos por un Excepcion de tipo SQLException"));
+		mensajes.put(CodigoMensaje.M00039.getIdentificador(),new Mensaje(CodigoMensaje.M00039,
+				"Ha ocurrido un error inesperado tratando de consultar los tipos de vehiculos"));
+		mensajes.put(CodigoMensaje.M00040.getIdentificador(),new Mensaje(CodigoMensaje.M00040,
+				"No es posible consultar los tipos de vehiculos a la base de datos por un error inesperado"));
+		
 		
 	}
 
 	@Override
 	public final String obtenerContenidoMensaje(CodigoMensaje codigo,final  String... parametros) {
-		// TODO Auto-generated method stub
+
 		return obtenerMensaje(codigo, parametros).getContenido();
 	}
 
