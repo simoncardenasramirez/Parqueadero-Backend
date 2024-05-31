@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import co.priv.parqueadero.autoparkadmin.business.facade.implvehiculo.ConsultarVehiculoFacade;
+import co.priv.parqueadero.autoparkadmin.business.facade.impl.vehiculo.ConsultarVehiculoFacade;
 import co.priv.parqueadero.autoparkadmin.controller.response.VehiculoResponse;
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.AUTOPARKADMINException;
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.MessageCatalogStrategy;

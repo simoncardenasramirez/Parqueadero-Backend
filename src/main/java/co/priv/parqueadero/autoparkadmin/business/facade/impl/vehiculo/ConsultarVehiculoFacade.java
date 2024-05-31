@@ -1,4 +1,4 @@
-package co.priv.parqueadero.autoparkadmin.business.facade.implvehiculo;
+package co.priv.parqueadero.autoparkadmin.business.facade.impl.vehiculo;
 
 import java.util.List;
 

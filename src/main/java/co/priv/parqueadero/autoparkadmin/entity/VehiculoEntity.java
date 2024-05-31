@@ -1,8 +1,10 @@
 package co.priv.parqueadero.autoparkadmin.entity;
 
-import java.util.UUID; 
+import java.util.UUID;
 
+import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.ObjectHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
+import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.UUIDHelper;
 
 
 public class VehiculoEntity {
@@ -31,7 +33,7 @@ public class VehiculoEntity {
 	}
 
 	public VehiculoEntity setId(final UUID id) {
-		this.id = id;
+		this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
 		return this;
 	}
 
@@ -49,8 +51,9 @@ public class VehiculoEntity {
 	}
 
 	public VehiculoEntity setTipoVehiculo(final TipoVehiculoEntity tipoVehiculo) {
-		this.tipoVehiculo=tipoVehiculo;
-		return this;
+        this.tipoVehiculo = ObjectHelper.getObjectHelper().
+                getDefaultValue(tipoVehiculo, new TipoVehiculoEntity());
+        return this;
 	}
 	
 	

@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.priv.parqueadero.autoparkadmin.business.facade.implvehiculo.ConsultarVehiculoFacade;
-import co.priv.parqueadero.autoparkadmin.business.facade.implvehiculo.RegistrarVehiculoFacade;
+import co.priv.parqueadero.autoparkadmin.business.facade.impl.vehiculo.ConsultarVehiculoFacade;
+import co.priv.parqueadero.autoparkadmin.business.facade.impl.vehiculo.RegistrarVehiculoFacade;
 import co.priv.parqueadero.autoparkadmin.controller.response.VehiculoResponse;
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.AUTOPARKADMINException;
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.MessageCatalogStrategy;

@@ -11,6 +11,8 @@ import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.SQLHelper;
 import co.priv.parqueadero.autoparkadmin.data.dao.entity.TipoVehiculoDAO;
 import co.priv.parqueadero.autoparkadmin.data.dao.entity.VehiculoDAO;
 import co.priv.parqueadero.autoparkadmin.data.dao.entity.concrete.SqlConnection;
+import co.priv.parqueadero.autoparkadmin.data.dao.entity.concrete.postgresql.TipoVehiculoPostgreSqlDAO;
+import co.priv.parqueadero.autoparkadmin.data.dao.entity.concrete.postgresql.VehiculoPostgreSqlDAO;
 import co.priv.parqueadero.autoparkadmin.data.dao.factory.DAOFactory;
 
 public final class PostgreSQLDAOFactory extends SqlConnection implements DAOFactory {
@@ -68,14 +70,12 @@ public final class PostgreSQLDAOFactory extends SqlConnection implements DAOFact
 
 	@Override
 	public VehiculoDAO getVehiculoDAO() {
-		// TODO Auto-generated method stub
-		return null;
+		return new VehiculoPostgreSqlDAO(getConexion());
 	}
 
 	@Override
 	public TipoVehiculoDAO getTipoVehiculoDAO() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        return new TipoVehiculoPostgreSqlDAO(getConexion());
+    }
 
 }
