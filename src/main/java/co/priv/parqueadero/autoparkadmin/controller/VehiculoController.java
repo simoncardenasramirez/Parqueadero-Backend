@@ -20,7 +20,7 @@ import co.priv.parqueadero.autoparkadmin.dto.VehiculoDTO;
 
 @RestController
 @RequestMapping("/api/v1/vehiculos")
-@CrossOrigin(origins = "http://localhost:4200", methods = {RequestMethod.GET, RequestMethod.POST})
+@CrossOrigin(origins = "http://localhost:8080", methods = {RequestMethod.GET, RequestMethod.POST})
 public final class VehiculoController {
 	@GetMapping
 	public VehiculoDTO vehiculo() {
