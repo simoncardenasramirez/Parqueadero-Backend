@@ -58,14 +58,14 @@ public final class VehiculoController {
 	}
 
 	@PostMapping("/registrar-vehiculo")
-	public ResponseEntity<VehiculoResponse> crear(@RequestBody VehiculoDTO ciudad) {
+	public ResponseEntity<VehiculoResponse> crear(@RequestBody VehiculoDTO vehiculo) {
 
 		var httpStatusCode = HttpStatus.ACCEPTED;
 		var vehiculoResponse = new VehiculoResponse();
 
 		try {
 			var facade = new RegistrarVehiculoFacade();
-			facade.execute(ciudad);
+			facade.execute(vehiculo);
 			vehiculoResponse.getMensajes().add(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00042));
 
 		} catch (final AUTOPARKADMINException excepcion) {
