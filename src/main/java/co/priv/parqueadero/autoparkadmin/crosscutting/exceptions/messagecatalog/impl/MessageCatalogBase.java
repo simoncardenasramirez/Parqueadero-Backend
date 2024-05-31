@@ -111,8 +111,14 @@ public final class MessageCatalogBase implements MessageCatalog {
 				"el tipo de vehiculo no se pudo consultar  por un error inesperado"));
 		mensajes.put(CodigoMensaje.M00047.getIdentificador(),new Mensaje(CodigoMensaje.M00047,
 				"el tipo de vehículo consultado correctamente"));
+		mensajes.put(CodigoMensaje.M00048.getIdentificador(),new Mensaje(CodigoMensaje.M00048,
+				"El formato de la matrícula es incorrecto"));
+		mensajes.put(CodigoMensaje.M00049.getIdentificador(),new Mensaje(CodigoMensaje.M00049,
+				"El tipo del vehículo debe no puede ser nulo..."));
+		mensajes.put(CodigoMensaje.M00050.getIdentificador(),new Mensaje(CodigoMensaje.M00050,
+				"El tipo del vehículo debe no puede estar vacio..."));
 		
-		
+
 	}
 
 	@Override
