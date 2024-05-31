@@ -61,12 +61,12 @@ public final class MessageCatalogBase implements MessageCatalog {
  
 		mensajes.put(CodigoMensaje.M00020.getIdentificador(), new Mensaje(CodigoMensaje.M00020,
 				"Se ha intentado iniciar una transacción con una conexión SQL cerrada..."));
-		mensajes.put(CodigoMensaje.M00021.getIdentificador(), new Mensaje(CodigoMensaje.M00022,
+		mensajes.put(CodigoMensaje.M00021.getIdentificador(), new Mensaje(CodigoMensaje.M00021,
 				"Se ha presentado un problema tratando de iniciar una transacción SQL con la fuente de información deseada..."));
 		mensajes.put(CodigoMensaje.M00022.getIdentificador(), new Mensaje(CodigoMensaje.M00022,
 				"Se ha presentado un problema INESPERADO tratando de iniciar una transacción SQL con la fuente de información deseada..."));
 		mensajes.put(CodigoMensaje.M00023.getIdentificador(),new Mensaje(CodigoMensaje.M00023,
-				"se ha presentado un prblema tratando de crear la ciudad \"${1}\" y si el problemas contacte a el administrador ..." ));
+				"se ha presentado un prblema tratando de registrar el vehiculo \"${1}\" y si el problema sigue contacte a el administrador ..." ));
 		mensajes.put(CodigoMensaje.M00027.getIdentificador(),new Mensaje(CodigoMensaje.M00027,
 				"Se ha presentado un problema tratando de llevar a cabo el registro de un vehículo"));
 		mensajes.put(CodigoMensaje.M00028.getIdentificador(),new Mensaje(CodigoMensaje.M00028,
@@ -105,8 +105,6 @@ public final class MessageCatalogBase implements MessageCatalog {
 				"Vehículo registrado correctamente"));
 		mensajes.put(CodigoMensaje.M00043.getIdentificador(),new Mensaje(CodigoMensaje.M00043,
 				"el vehiculo no se pudo consultar por un error inesperado"));
-		mensajes.put(CodigoMensaje.M00044.getIdentificador(),new Mensaje(CodigoMensaje.M00044,
-				"el vehiculo no se pudo registrar por un error inesperado"));
 		mensajes.put(CodigoMensaje.M00045.getIdentificador(),new Mensaje(CodigoMensaje.M00045,
 				"el tipo de vehiculo no se pudo consultar  por un error inesperado"));
 		mensajes.put(CodigoMensaje.M00047.getIdentificador(),new Mensaje(CodigoMensaje.M00047,
@@ -114,9 +112,9 @@ public final class MessageCatalogBase implements MessageCatalog {
 		mensajes.put(CodigoMensaje.M00048.getIdentificador(),new Mensaje(CodigoMensaje.M00048,
 				"El formato de la matrícula es incorrecto"));
 		mensajes.put(CodigoMensaje.M00049.getIdentificador(),new Mensaje(CodigoMensaje.M00049,
-				"El tipo del vehículo debe no puede ser nulo..."));
+				"El tipo del vehículo debe y no puede ser nulo..."));
 		mensajes.put(CodigoMensaje.M00050.getIdentificador(),new Mensaje(CodigoMensaje.M00050,
-				"El tipo del vehículo debe no puede estar vacio..."));
+				"El tipo del vehículo debe y no puede estar vacio..."));
 		
 
 	}

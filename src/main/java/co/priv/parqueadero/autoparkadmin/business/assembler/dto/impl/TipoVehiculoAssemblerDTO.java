@@ -1,6 +1,6 @@
 package co.priv.parqueadero.autoparkadmin.business.assembler.dto.impl;
 
-import java.util.ArrayList;  
+import java.util.ArrayList;   
 import java.util.List;
 
 import co.priv.parqueadero.autoparkadmin.business.assembler.dto.AssemblerDTO;

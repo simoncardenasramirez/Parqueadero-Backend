@@ -31,10 +31,10 @@ public final class VehiculoController {
 		var vehiculoResponse = new VehiculoResponse();
 
 		try {
-			var ciudadDto = VehiculoDTO.build();
+			var vehiculoDto = VehiculoDTO.build();
 			var facade = new ConsultarVehiculoFacade();
 
-			vehiculoResponse.setDatos(facade.execute(ciudadDto));
+			vehiculoResponse.setDatos(facade.execute(vehiculoDto));
 			vehiculoResponse.getMensajes().add(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00041));
 
 		} catch (final AUTOPARKADMINException excepcion) {
