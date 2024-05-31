@@ -1,8 +1,8 @@
 package co.priv.parqueadero.autoparkadmin.business.facade.impl.vehiculo;
 
 import co.priv.parqueadero.autoparkadmin.business.assembler.dto.impl.VehiculoAssemblerDTO;
+
 import co.priv.parqueadero.autoparkadmin.business.facade.FacadeWithOutReturn;
-import co.priv.parqueadero.autoparkadmin.business.facade.FacadeWithReturn;
 import co.priv.parqueadero.autoparkadmin.business.usecase.impl.vehiculo.RegistrarVehiculo;
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.AUTOPARKADMINException;
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.custom.BusinessAUTOPARKADMINException;
@@ -25,9 +25,9 @@ public final class RegistrarVehiculoFacade implements FacadeWithOutReturn<Vehicu
 		daoFactory.iniciarTransaccion();
 		try {
 			var useCase = new RegistrarVehiculo(daoFactory);
-			var ciudadDomain = VehiculoAssemblerDTO.getInstance().toDomain(dto);
+			var vehiculoDomain = VehiculoAssemblerDTO.getInstance().toDomain(dto);
 			
-			useCase.execute(ciudadDomain);
+			useCase.execute(vehiculoDomain);
 			
 			//ejecutar caso de uso
 			daoFactory.confirmarTransaccion();
