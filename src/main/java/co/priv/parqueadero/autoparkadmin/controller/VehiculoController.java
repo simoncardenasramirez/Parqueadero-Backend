@@ -2,12 +2,10 @@ package co.priv.parqueadero.autoparkadmin.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.priv.parqueadero.autoparkadmin.business.facade.impl.vehiculo.ConsultarVehiculoFacade;
@@ -20,14 +18,14 @@ import co.priv.parqueadero.autoparkadmin.dto.VehiculoDTO;
 
 @RestController
 @RequestMapping("/api/v1/vehiculos")
-@CrossOrigin(origins = "http://localhost:4200", methods = {RequestMethod.GET, RequestMethod.POST})
 public final class VehiculoController {
-	@GetMapping
-	public VehiculoDTO vehiculo() {
+	
+	@GetMapping("/dummy")
+	public VehiculoDTO dummy() {
 		return VehiculoDTO.build();
 	}
-
-	@GetMapping("/consultar-vehiculo")
+	
+	@GetMapping()
 	public ResponseEntity<VehiculoResponse> consultar() {
 
 		var httpStatusCode = HttpStatus.ACCEPTED;
@@ -57,8 +55,8 @@ public final class VehiculoController {
 
 	}
 
-	@PostMapping("/registrar-vehiculo")
-	public ResponseEntity<VehiculoResponse> crear(@RequestBody VehiculoDTO vehiculo) {
+	@PostMapping()
+	public ResponseEntity<VehiculoResponse> registrar(@RequestBody VehiculoDTO vehiculo) {
 
 		var httpStatusCode = HttpStatus.ACCEPTED;
 		var vehiculoResponse = new VehiculoResponse();

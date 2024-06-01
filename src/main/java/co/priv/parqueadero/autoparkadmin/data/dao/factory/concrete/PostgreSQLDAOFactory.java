@@ -22,12 +22,10 @@ public final class PostgreSQLDAOFactory extends SqlConnection implements DAOFact
 		abrirConexion();
 	}
 
-
-
 	@Override
 	public void abrirConexion() {
 		final String connectionUrl = "jdbc:postgresql://localhost:5432/Parqueadero?user=postgres&password=f4n2d1j9";
-	
+
 		try {
 			setConexion(DriverManager.getConnection(connectionUrl));
 		} catch (final AUTOPARKADMINException excepcion) {
@@ -75,7 +73,7 @@ public final class PostgreSQLDAOFactory extends SqlConnection implements DAOFact
 
 	@Override
 	public TipoVehiculoDAO getTipoVehiculoDAO() {
-        return new TipoVehiculoPostgreSqlDAO(getConexion());
-    }
+		return new TipoVehiculoPostgreSqlDAO(getConexion());
+	}
 
 }

@@ -3,16 +3,20 @@ package co.priv.parqueadero.autoparkadmin.dto;
 import java.util.UUID; 
 
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
+import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.UUIDHelper;
 
 
 public class VehiculoDTO {
 	
 	private UUID id;
 	private String matricula;
-	private TipoVehiculoDTO tipoVehiculo;
+	private TipoVehiculoDTO TipoVehiculo;
 	
 	public VehiculoDTO() {
 		super();
+		setId(UUIDHelper.getDefault());
+		setMatricula(TextHelper.EMPTY);
+		setTipoVehiculo(TipoVehiculoDTO.build());
 	}
 	
 	public static final VehiculoDTO build() {
@@ -45,11 +49,11 @@ public class VehiculoDTO {
 	}
 
 	public TipoVehiculoDTO getTipoVehiculo() {
-		return tipoVehiculo;
+		return TipoVehiculo;
 	}
 
 	public VehiculoDTO setTipoVehiculo(final TipoVehiculoDTO tipoVehiculo) {
-		this.tipoVehiculo=tipoVehiculo;
+		TipoVehiculo = tipoVehiculo;
 		return this;
 	}
 	
