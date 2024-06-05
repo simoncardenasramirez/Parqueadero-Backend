@@ -1,4 +1,4 @@
-package co.priv.parqueadero.autoparkadmin.controller;
+	package co.priv.parqueadero.autoparkadmin.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,67 +19,63 @@ import co.priv.parqueadero.autoparkadmin.dto.VehiculoDTO;
 @RestController
 @RequestMapping("/api/v1/vehiculos")
 public final class VehiculoController {
-	
-	@GetMapping("/dummy")
-	public VehiculoDTO dummy() {
-		return VehiculoDTO.build();
-	}
-	
-	@GetMapping()
-	public ResponseEntity<VehiculoResponse> consultar() {
 
-		var httpStatusCode = HttpStatus.ACCEPTED;
-		var vehiculoResponse = new VehiculoResponse();
+    @GetMapping("/vehiculos")
+    public ResponseEntity<VehiculoResponse> consultar(){
 
-		try {
-			var vehiculoDto = VehiculoDTO.build();
-			var facade = new ConsultarVehiculoFacade();
+        var httpStatusCode = HttpStatus.ACCEPTED;
+        var vehiculoResponse = new VehiculoResponse();
 
-			vehiculoResponse.setDatos(facade.execute(vehiculoDto));
-			vehiculoResponse.getMensajes().add(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00041));
+        try {
+            var vehiculoDto = VehiculoDTO.build();
+            var facade = new ConsultarVehiculoFacade();
 
-		} catch (final AUTOPARKADMINException excepcion) {
-			httpStatusCode = HttpStatus.BAD_REQUEST;
-			vehiculoResponse.getMensajes().add(excepcion.getMensajeUsuario());
-			excepcion.printStackTrace();
-		} catch (final Exception excepcion) {
-			httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+            vehiculoResponse.setDatos(facade.execute(vehiculoDto));
+            var mensajeUsuario = "mensaje 59";
+            vehiculoResponse.getMensajes().add(mensajeUsuario);
 
-			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00043);
-			vehiculoResponse.getMensajes().add(mensajeUsuario);
+        }catch (final AUTOPARKADMINException exception){
+            httpStatusCode = HttpStatus.BAD_REQUEST;
+            vehiculoResponse.getMensajes().add(exception.getMensajeUsuario());
+            exception.printStackTrace();
 
-			excepcion.printStackTrace();
-		}
+        }catch (final Exception exception){
+            httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+            var mensajeUsuario = "mensaje 45";
+            vehiculoResponse.getMensajes().add(mensajeUsuario);
 
-		return new ResponseEntity<>(vehiculoResponse, httpStatusCode);
+            exception.printStackTrace();
+        }
+        return new ResponseEntity<>(vehiculoResponse, httpStatusCode);
+    }
 
-	}
+    @PostMapping("/registarvehiculo")
+    public ResponseEntity<VehiculoResponse> registrar(@RequestBody VehiculoDTO vehiculo) {
 
-	@PostMapping()
-	public ResponseEntity<VehiculoResponse> registrar(@RequestBody VehiculoDTO vehiculo) {
+        var httpStatusCode = HttpStatus.ACCEPTED;
+        var vehiculoResponse = new VehiculoResponse();
 
-		var httpStatusCode = HttpStatus.ACCEPTED;
-		var vehiculoResponse = new VehiculoResponse();
+        try {
+            var facade = new RegistrarVehiculoFacade();
+            facade.execute(vehiculo);
+            var mensajeUsuario = "mensaje 61";
+             vehiculoResponse.getMensajes().add(mensajeUsuario);
 
-		try {
-			var facade = new RegistrarVehiculoFacade();
-			facade.execute(vehiculo);
-			vehiculoResponse.getMensajes().add(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00042));
+        } catch (final AUTOPARKADMINException excepcion) {
+            httpStatusCode = HttpStatus.BAD_REQUEST;
+            vehiculoResponse.getMensajes().add(excepcion.getMensajeUsuario());
+            excepcion.printStackTrace();
+        } catch (final Exception excepcion) {
+            httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
 
-		} catch (final AUTOPARKADMINException excepcion) {
-			httpStatusCode = HttpStatus.BAD_REQUEST;
-			vehiculoResponse.getMensajes().add(excepcion.getMensajeUsuario());
-			excepcion.printStackTrace();
-		} catch (final Exception excepcion) {
-			httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+            var mensajeUsuario = "mensaje 57";
+            vehiculoResponse.getMensajes().add(mensajeUsuario);
 
-			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00044);
-			vehiculoResponse.getMensajes().add(mensajeUsuario);
+            excepcion.printStackTrace();
+        }
 
-			excepcion.printStackTrace();
-		}
+        return new ResponseEntity<>(vehiculoResponse, httpStatusCode);
 
-		return new ResponseEntity<>(vehiculoResponse, httpStatusCode);
+    }
 
-	}
 }

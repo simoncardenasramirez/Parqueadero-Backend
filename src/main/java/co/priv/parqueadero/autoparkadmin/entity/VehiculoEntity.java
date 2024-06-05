@@ -2,6 +2,8 @@ package co.priv.parqueadero.autoparkadmin.entity;
 
 import java.util.UUID;
 
+import static co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper.EMPTY;
+
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.ObjectHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.UUIDHelper;
@@ -14,11 +16,12 @@ public class VehiculoEntity {
 	private TipoVehiculoEntity tipoVehiculo;
 	
 	public VehiculoEntity() {
-		super();
+		setId(UUIDHelper.getDefault());
+		setMatricula(EMPTY);
+		setTipoVehiculo(TipoVehiculoEntity.build());
 	}
 
-	public VehiculoEntity(UUID id, String matricula, TipoVehiculoEntity tipoVehiculo) {
-		super();
+	public VehiculoEntity(final UUID id,final String matricula,final TipoVehiculoEntity tipoVehiculo) {
 		setId(id);
 		setMatricula(matricula);
 		setTipoVehiculo(tipoVehiculo);

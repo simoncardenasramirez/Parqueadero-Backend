@@ -13,8 +13,10 @@ import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.data.CodigoMensaje;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.ObjectHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
+import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.UUIDHelper;
 import co.priv.parqueadero.autoparkadmin.data.dao.entity.VehiculoDAO;
 import co.priv.parqueadero.autoparkadmin.data.dao.entity.concrete.SqlConnection;
+import co.priv.parqueadero.autoparkadmin.entity.TipoVehiculoEntity;
 import co.priv.parqueadero.autoparkadmin.entity.VehiculoEntity;
 
 public class VehiculoPostgreSqlDAO extends SqlConnection implements VehiculoDAO {
@@ -24,84 +26,96 @@ public class VehiculoPostgreSqlDAO extends SqlConnection implements VehiculoDAO 
 	}
 
 	@Override
-	public void crear(VehiculoEntity data) {
-		final StringBuilder sentenciaSQL = new StringBuilder();
+    public final void crear(VehiculoEntity data) {
+        final StringBuilder sentenciaSql = new StringBuilder();
 
-		sentenciaSQL.append("INSERT INTO Vehiculo(id,matricula,tipovehiculo)");
-		sentenciaSQL.append("SELECT ?,?,?");
+        sentenciaSql.append("INSERT INTO vehiculo (id, matricula, tipoVehiculo) ");
+        sentenciaSql.append("VALUES (?,?,?)");
 
-		try (final PreparedStatement sentenciaSQLPreparada = getConexion().prepareStatement(sentenciaSQL.toString())) {
-			sentenciaSQLPreparada.setObject(1, data.getId());
-			sentenciaSQLPreparada.setString(2, data.getMatricula());
-			sentenciaSQLPreparada.setObject(3, data.getTipoVehiculo().getId());
+        try (final PreparedStatement sentenciaSqlPreparada = getConexion().prepareStatement(sentenciaSql.toString())) {
 
-			sentenciaSQLPreparada.executeUpdate();
+            sentenciaSqlPreparada.setObject(1, data.getId());
+            sentenciaSqlPreparada.setString(2, data.getMatricula());
+            sentenciaSqlPreparada.setObject(3, data.getTipoVehiculo().getId());
 
-		} catch (final SQLException excepcion) {
-			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00034);
-			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00026);
-			throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, excepcion);
+            sentenciaSqlPreparada.executeUpdate();
 
-		} catch (final Exception excepcion) {
-			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00035);
-			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00026);
-			throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, excepcion);
-		}
+        } catch (final SQLException excepcion) {
+            var mensajeUsuario ="mensaje 31";
+            var mensajeTecnico = "mensaje 32";
+            throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, excepcion);
+        } catch (final Exception excepcion) {
+            var mensajeUsuario = "mensaje 33";
+            var mensajeTecnico = "mensaje 34";
+            throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, excepcion);
+        }
+    }
 
-	}
 
-	@Override
-	public List<VehiculoEntity> consultar(VehiculoEntity data) {
-		final StringBuilder sentenciaSql = new StringBuilder();
-		sentenciaSql.append("SELECT codigo, matricula FROM Vehiculo WHERE 1=1");
+    @Override
+    public List<VehiculoEntity> consultar (VehiculoEntity data) {
+        final StringBuilder sentenciaSql = new StringBuilder();
+        sentenciaSql.append("SELECT v.id, v.matricula, ")
+                .append("tv.id as idTipoVehiculo, tv.nombre as TipoVehiculo ")
+                .append("FROM vehiculo v ")
+                .append("INNER JOIN tipovehiculo tv ON v.tipovehiculo = tv.id ")
+                .append("WHERE 1=1 ");
 
-		if (ObjectHelper.getObjectHelper().isNull(data)) {
-			if (ObjectHelper.getObjectHelper().isNull(data.getId())) {
-				sentenciaSql.append(" AND codigo = ?");
-			}
-			if (!TextHelper.isNullOrEmpty(data.getMatricula())) {
-				sentenciaSql.append(" AND matricula = ?");
-			}
-		}
+        final List<Object> parametros = new ArrayList<>();
 
-		final List<VehiculoEntity> paises = new ArrayList<>();
+        if (!ObjectHelper.getObjectHelper().isNull(data.getId()) &&
+                !data.getId().equals(UUIDHelper.getDefault())) {
+            sentenciaSql.append(" AND v.id = ?");
+            parametros.add(data.getId());
+        }
+        if (!TextHelper.isNullOrEmpty(data.getMatricula())) {
+            sentenciaSql.append(" AND v.matricula = ?");
+            parametros.add(data.getMatricula());
+        }
+        
+        if (!ObjectHelper.getObjectHelper().isNull(data.getTipoVehiculo()) &&
+                !ObjectHelper.getObjectHelper().isNull(data.getTipoVehiculo().getId()) &&
+                !data.getTipoVehiculo().getId().equals(UUIDHelper.getDefault())) {
+            sentenciaSql.append(" AND v.tipovehiculo = ?");
+            parametros.add(data.getTipoVehiculo().getId());
+        }
 
-		try (final PreparedStatement sentenciaSqlPreparada = getConexion().prepareStatement(sentenciaSql.toString())) {
+        final List<VehiculoEntity> vehiculos = new ArrayList<>();
 
-			int index = 1;
+        try (final PreparedStatement sentenciaSqlPreparada = getConexion().prepareStatement(sentenciaSql.toString())) {
+            for (int i = 0; i < parametros.size(); i++) {
+                sentenciaSqlPreparada.setObject(i + 1, parametros.get(i));
+            }
 
-			if (ObjectHelper.getObjectHelper().isNull(data)) {
-				if (ObjectHelper.getObjectHelper().isNull(data.getId())) {
-					sentenciaSqlPreparada.setObject(index++, data.getId());
-				}
-				if (!TextHelper.isNullOrEmpty(data.getMatricula())) {
-					sentenciaSqlPreparada.setString(index++, data.getMatricula());
-				}
-			}
+            try (final ResultSet resultado = sentenciaSqlPreparada.executeQuery()) {
+                while (resultado.next()) {
+                	VehiculoEntity vehiculo = new VehiculoEntity().build()
+                        .setId(UUID.fromString(resultado.getString("id")))
+                        .setMatricula(resultado.getString("matricula"));
 
-			try (final ResultSet resultado = sentenciaSqlPreparada.executeQuery()) {
-				while (resultado.next()) {
-					VehiculoEntity vehiculo = new VehiculoEntity();
-					vehiculo.setId((UUID) resultado.getObject("codigo"));
-					vehiculo.setMatricula(resultado.getString("matricula"));
-					paises.add(vehiculo);
-				}
-			}
+                    TipoVehiculoEntity tipoVehiculo = new TipoVehiculoEntity().build()
+                        .setId(UUID.fromString(resultado.getString("idTipoVehiculo")))
+                        .setNombre(resultado.getString("TipoVehiculo"));
+   
 
-		} catch (final SQLException excepcion) {
-			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00024);
-			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00036);
+                    vehiculo.setTipoVehiculo(tipoVehiculo);
 
-			throw new DataAUTOPARKADMINException(mensajeUsuario, mensajeTecnico, excepcion);
+                    vehiculos.add(vehiculo);
+                }
+            }
+        } catch (final SQLException exception) {
+            var mensajeUsuario = "mensaje 35";
+            var mensajeTecnico = "mensaje 36";
 
-		} catch (final Exception excepcion) {
-			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00024);
-			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00025);
+            throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, exception);
+        } catch (final Exception exception) {
+            var mensajeUsuario = "mensaje 37";
+            var mensajeTecnico = "mensaje 38";
 
-			throw new DataAUTOPARKADMINException(mensajeUsuario, mensajeTecnico, excepcion);
-		}
+            throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, exception);
+        }
 
-		return paises;
-	}
+        return vehiculos;
+    }
 
 }

@@ -1,7 +1,8 @@
 package co.priv.parqueadero.autoparkadmin.dto;
 
-import java.util.UUID; 
+import java.util.UUID;
 
+import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.ObjectHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.UUIDHelper;
 
@@ -10,32 +11,32 @@ public class VehiculoDTO {
 	
 	private UUID id;
 	private String matricula;
-	private TipoVehiculoDTO TipoVehiculo;
+	private TipoVehiculoDTO tipoVehiculo;
 	
 	public VehiculoDTO() {
-		super();
 		setId(UUIDHelper.getDefault());
 		setMatricula(TextHelper.EMPTY);
 		setTipoVehiculo(TipoVehiculoDTO.build());
+	}
+	
+	public VehiculoDTO(final UUID id,final String matricula,final TipoVehiculoDTO tipoVehiculo) {
+		setId(id);
+		setMatricula(matricula);
+		setTipoVehiculo(tipoVehiculo);
 	}
 	
 	public static final VehiculoDTO build() {
 		return new VehiculoDTO();
 	}
 
-	public VehiculoDTO(UUID id, String matricula, TipoVehiculoDTO tipoVehiculo) {
-		super();
-		setId(id);
-		setMatricula(matricula);
-		setTipoVehiculo(tipoVehiculo);
-	}
+
 
 	public UUID getId() {
 		return id;
 	}
 
 	public VehiculoDTO setId(final UUID id) {
-		this.id = id;
+		this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
 		return this;
 	}
 
@@ -49,12 +50,13 @@ public class VehiculoDTO {
 	}
 
 	public TipoVehiculoDTO getTipoVehiculo() {
-		return TipoVehiculo;
+		return tipoVehiculo;
 	}
 
 	public VehiculoDTO setTipoVehiculo(final TipoVehiculoDTO tipoVehiculo) {
-		TipoVehiculo = tipoVehiculo;
-		return this;
+        this.tipoVehiculo = ObjectHelper.getObjectHelper().
+                getDefaultValue(tipoVehiculo, new TipoVehiculoDTO());
+        return this;
 	}
 	
 	

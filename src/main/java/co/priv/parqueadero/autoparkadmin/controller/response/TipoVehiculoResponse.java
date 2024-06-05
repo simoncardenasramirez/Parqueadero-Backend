@@ -2,12 +2,12 @@ package co.priv.parqueadero.autoparkadmin.controller.response;
 
 import java.util.ArrayList;
 
-import co.priv.parqueadero.autoparkadmin.data.dao.entity.TipoVehiculoDAO;
+import co.priv.parqueadero.autoparkadmin.dto.TipoVehiculoDTO;
 
-public class TipoVehiculoResponse extends Response<TipoVehiculoDAO> {
+public class TipoVehiculoResponse extends Response<TipoVehiculoDTO> {
 
 	public TipoVehiculoResponse() {
-		setMensajes(new ArrayList<>());
+		setMensajes(new ArrayList<String>());
 		setDatos(new ArrayList<>());
 	}
 

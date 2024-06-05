@@ -13,74 +13,67 @@ import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.data.CodigoMensaje;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.ObjectHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
+import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.UUIDHelper;
 import co.priv.parqueadero.autoparkadmin.data.dao.entity.TipoVehiculoDAO;
 import co.priv.parqueadero.autoparkadmin.data.dao.entity.VehiculoDAO;
 import co.priv.parqueadero.autoparkadmin.data.dao.entity.concrete.SqlConnection;
 import co.priv.parqueadero.autoparkadmin.entity.TipoVehiculoEntity;
 import co.priv.parqueadero.autoparkadmin.entity.VehiculoEntity;
 
-public class TipoVehiculoPostgreSqlDAO extends SqlConnection implements TipoVehiculoDAO {
+public final class TipoVehiculoPostgreSqlDAO extends SqlConnection implements TipoVehiculoDAO {
 
-	public TipoVehiculoPostgreSqlDAO(final Connection conexion) {
-		super(conexion);
-	}
+    private static final String CONSULTAR_TIPOS_VEHICULO_SQL = "SELECT id, nombre FROM TipoVehiculo WHERE 1=1";
 
-	@Override
-	public List<TipoVehiculoEntity> consultar(TipoVehiculoEntity data) {
-		final List<TipoVehiculoEntity> tiposVehiculo = new ArrayList<>();
+    public TipoVehiculoPostgreSqlDAO(final Connection conexion) {
+        super(conexion);
+    }
 
-	
-		final StringBuilder sentenciaSql = new StringBuilder();
-		sentenciaSql.append("SELECT codigo, nombre FROM TipoVehiculo");
+    @Override
+    public List<TipoVehiculoEntity> consultar(final TipoVehiculoEntity data) {
 
+        final StringBuilder sentenciaSql = new StringBuilder(CONSULTAR_TIPOS_VEHICULO_SQL);
+        final List<Object> parametros = new ArrayList<>();
 
-		if (ObjectHelper.getObjectHelper().isNull(data)) {
-			if (ObjectHelper.getObjectHelper().isNull(data.getId())) {
-				sentenciaSql.append(" WHERE codigo = ?");
-			}
-			if (!TextHelper.isNullOrEmpty(data.getNombre())) {
-				if (sentenciaSql.toString().contains("WHERE")) {
-					sentenciaSql.append(" AND nombre = ?");
-				} else {
-					sentenciaSql.append(" WHERE nombre = ?");
-				}
-			}
-		}
+        if (!ObjectHelper.getObjectHelper().isNull(data.getId()) && !data.getId().equals(UUIDHelper.getDefault())) {
+            sentenciaSql.append(" AND id = ?");
+            parametros.add(data.getId());
+        }
+        if (!TextHelper.isNullOrEmpty(data.getNombre())) {
+            sentenciaSql.append(" AND nombre = ?");
+            parametros.add(data.getNombre());
+        }
 
-		try (final PreparedStatement sentenciaSqlPreparada = getConexion().prepareStatement(sentenciaSql.toString())) {
-		
-			int index = 1;
-			if (ObjectHelper.getObjectHelper().isNull(data.getId())) {
-				if (ObjectHelper.getObjectHelper().isNull(data.getId())) {
-					sentenciaSqlPreparada.setObject(index++, data.getId());
-				}
-				if (!TextHelper.isNullOrEmpty(data.getNombre())) {
-					sentenciaSqlPreparada.setString(index++, data.getNombre());
-				}
-			}
+        final List<TipoVehiculoEntity> tipoVehiculos = new ArrayList<>();
 
-		
-		
-			try (final ResultSet resultado = sentenciaSqlPreparada.executeQuery()) {
-			    while (resultado.next()) {
-			        TipoVehiculoEntity tipoVehiculo = new TipoVehiculoEntity();
-			        tipoVehiculo.setId((UUID) resultado.getObject("codigo"));
-			        tipoVehiculo.setNombre(resultado.getString("nombre"));
-			        tiposVehiculo.add(tipoVehiculo);
-			    }
-			}
+        try (final PreparedStatement sentenciaSqlPreparada = getConexion().prepareStatement(sentenciaSql.toString())) {
+            for (int i = 0; i < parametros.size(); i++) {
+                sentenciaSqlPreparada.setObject(i + 1, parametros.get(i));
+            }
 
-		} catch (final SQLException excepcion) {
-			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00037);
-			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00038);
-			throw new DataAUTOPARKADMINException(mensajeUsuario, mensajeTecnico, excepcion);
-		} catch (final Exception excepcion) {
-			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00039);
-			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00040);
-			throw new DataAUTOPARKADMINException(mensajeUsuario, mensajeTecnico, excepcion);
-		}
+            try (final ResultSet resultado = sentenciaSqlPreparada.executeQuery()) {
+                while (resultado.next()) {
+                	TipoVehiculoEntity tipoVehiculo = TipoVehiculoEntity.build()
+                            .setId(UUID.fromString(resultado.getString("id")))
+                            .setNombre(resultado.getString("nombre"));
 
-		return tiposVehiculo;
-	}
+                    tipoVehiculos.add(tipoVehiculo);
+                }
+            }
 
+        } catch (final SQLException exception) {
+            var mensajeUsuario = "mensaje 27";
+            var mensajeTecnico = "mensaje 28";
+
+            throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, exception);
+
+        } catch (final Exception exception) {
+            var mensajeUsuario = "mensaje 29";
+            var mensajeTecnico = "mensaje 30";
+
+            throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, exception);
+
+        }
+
+        return tipoVehiculos;
+    }
 }

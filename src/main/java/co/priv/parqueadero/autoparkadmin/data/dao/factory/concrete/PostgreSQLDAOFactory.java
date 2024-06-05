@@ -1,7 +1,11 @@
 package co.priv.parqueadero.autoparkadmin.data.dao.factory.concrete;
 
+import java.beans.Statement;
+import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.UUID;
 
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.AUTOPARKADMINException;
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.custom.DataAUTOPARKADMINException;
@@ -24,7 +28,7 @@ public final class PostgreSQLDAOFactory extends SqlConnection implements DAOFact
 
 	@Override
 	public void abrirConexion() {
-		final String connectionUrl = "jdbc:postgresql://localhost:5432/Parqueadero?user=postgres&password=f4n2d1j9";
+		final String connectionUrl = "jdbc:postgresql://localhost:5432/Parqueadero?user=postgres&password=PoiuytrewQ123";
 
 		try {
 			setConexion(DriverManager.getConnection(connectionUrl));
@@ -75,5 +79,44 @@ public final class PostgreSQLDAOFactory extends SqlConnection implements DAOFact
 	public TipoVehiculoDAO getTipoVehiculoDAO() {
 		return new TipoVehiculoPostgreSqlDAO(getConexion());
 	}
+	
+//	public static void main(String[] args) {
+//	    Connection conexion = null;
+//	    try {
+//	        // Establecer conexión
+//	        final String connectionUrl = "jdbc:postgresql://localhost:5432/postgres?user=postgres&password=PoiuytrewQ123";
+//	        conexion = DriverManager.getConnection(connectionUrl);
+//	        System.out.println("Conexión establecida correctamente.");
+//
+//	        // Ejecutar una consulta de prueba
+//	        String consulta = "SELECT v.id, v.matricula, tv.nombre AS tipo_vehiculo " +
+//	                          "FROM vehiculo v " +
+//	                          "JOIN tipovehiculo tv ON v.tipovehiculo = tv.id";
+//	        java.sql.Statement statement = conexion.createStatement();
+//	        ResultSet resultSet = statement.executeQuery(consulta);
+//
+//	        // Mostrar resultados de la consulta
+//	        while (resultSet.next()) {
+//	            UUID id = resultSet.getObject("id", UUID.class);
+//	            String nombre = resultSet.getString("matricula");
+//	            String tipoVehiculo = resultSet.getString("tipo_vehiculo");
+//	            System.out.println("ID: " + id + ", matricula: " + nombre + ", tipo vehiculo: " + tipoVehiculo);
+//	        }
+//
+//	    } catch (SQLException excepcion) {
+//	        System.out.println("Error al conectar o ejecutar la consulta: " + excepcion.getMessage());
+//	    } finally {
+//	        // Cerrar la conexión
+//	        if (conexion != null) {
+//	            try {
+//	                conexion.close();
+//	                System.out.println("Conexión cerrada.");
+//	            } catch (SQLException e) {
+//	                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+//	            }
+//	        }
+//	    }
+//	}
+
 
 }

@@ -18,8 +18,7 @@ public final class TipoVehiculoDTO {
 		setNombre(TextHelper.EMPTY);
 	}
 
-	public TipoVehiculoDTO(UUID id, String nombre) {
-		super();
+	public TipoVehiculoDTO(final UUID id,final String nombre) {
 		setId(id);
 		setNombre(nombre);
 	}
@@ -35,7 +34,7 @@ public final class TipoVehiculoDTO {
 
 
 	public  TipoVehiculoDTO setId(final UUID id) {
-		this.id = id;
+		this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
 		return this;
 	}
 
