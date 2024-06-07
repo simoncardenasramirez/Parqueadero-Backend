@@ -1,18 +1,16 @@
 package co.priv.parqueadero.autoparkadmin.business.usecase.impl.vehiculo;
 
 import java.util.UUID;
-
 import co.priv.parqueadero.autoparkadmin.business.assembler.entity.impl.TipoVehiculoAssemblerEntity;
-import co.priv.parqueadero.autoparkadmin.business.domain.TipoVehiculoDomain;
 import co.priv.parqueadero.autoparkadmin.business.domain.VehiculoDomain;
 import co.priv.parqueadero.autoparkadmin.business.usecase.UseCaseWithOutReturn;
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.custom.BusinessAUTOPARKADMINException;
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.MessageCatalogStrategy;
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.data.CodigoMensaje;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.ObjectHelper;
-import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.UUIDHelper;
 import co.priv.parqueadero.autoparkadmin.data.dao.factory.DAOFactory;
+import co.priv.parqueadero.autoparkadmin.entity.TipoVehiculoEntity;
 import co.priv.parqueadero.autoparkadmin.entity.VehiculoEntity;
 
 public final class RegistrarVehiculo implements UseCaseWithOutReturn<VehiculoDomain> {
@@ -40,7 +38,7 @@ public final class RegistrarVehiculo implements UseCaseWithOutReturn<VehiculoDom
 		validarVehiculoMismaMatricula(data.getMatricula());
 
 		// 3. Validar que el vehiculo tenga un tipo de vehiculo
-		validarTipoVehiculo(data.getTipoVehiculo());
+		validarTipoVehiculoExista(data.getTipoVehiculo().getId());
 
 		var vehiculoEntity = VehiculoEntity.build().setId(generarIdentificadorVehiculo())
 				.setMatricula(data.getMatricula())
@@ -82,17 +80,13 @@ public final class RegistrarVehiculo implements UseCaseWithOutReturn<VehiculoDom
 		}
 	}
 
-	private void validarTipoVehiculo(TipoVehiculoDomain tipoVehiculo) {
-
-		if (ObjectHelper.getObjectHelper().isNull(tipoVehiculo)) {
-
-			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00049);
-			throw new BusinessAUTOPARKADMINException(mensajeUsuario);
-		}
-
-		if (TextHelper.isNullOrEmpty(tipoVehiculo.getNombre())) {
-
-			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00050);
+	private void validarTipoVehiculoExista(final UUID idTipoVehiculo) {
+		var tipoVehiculoEntity = TipoVehiculoEntity.build().setId(idTipoVehiculo);
+		
+		var resultados = factory.getTipoVehiculoDAO().consultar(tipoVehiculoEntity);
+		
+		if (resultados.isEmpty()) {
+			var mensajeUsuario = "El Tipo vehiculo al que desea asociar el vehiculo no existe";
 			throw new BusinessAUTOPARKADMINException(mensajeUsuario);
 		}
 	}

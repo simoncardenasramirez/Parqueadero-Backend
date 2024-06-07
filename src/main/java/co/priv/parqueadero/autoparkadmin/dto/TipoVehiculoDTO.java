@@ -1,10 +1,11 @@
 package co.priv.parqueadero.autoparkadmin.dto;
 
 import java.util.UUID;
+
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.UUIDHelper;
 
-
+import java.util.UUID;
 
 public final class TipoVehiculoDTO {
 	
@@ -26,6 +27,11 @@ public final class TipoVehiculoDTO {
 	public static final TipoVehiculoDTO build() {
 		return new TipoVehiculoDTO();
 	}
+	
+    public static TipoVehiculoDTO fromString(String value) {
+        UUID id = UUID.fromString(value);
+        return new TipoVehiculoDTO(id, TextHelper.EMPTY);
+    }
 
 
 	public  UUID getId() {

@@ -76,7 +76,7 @@ public final class MessageCatalogBase implements MessageCatalog {
 		mensajes.put(CodigoMensaje.M00030.getIdentificador(),new Mensaje(CodigoMensaje.M00030,
 				"el DAOfactoty para registrar el vehiculo llego nulo..."));
 		mensajes.put(CodigoMensaje.M00032.getIdentificador(),new Mensaje(CodigoMensaje.M00032,
-				"Ya existe un vehículo registrado con la matrícula \"${1}\""));
+				"Ya existe un vehículo registrado con esta matrícula en la base de datos "));
 		mensajes.put(CodigoMensaje.M00046.getIdentificador(),new Mensaje(CodigoMensaje.M00046,
 				"No es posible crear el DAO deseado con una conexion cerrada"));
 		mensajes.put(CodigoMensaje.M00024.getIdentificador(),new Mensaje(CodigoMensaje.M00024,

@@ -13,10 +13,10 @@ import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.AUTOPARKADMINEx
 import co.priv.parqueadero.autoparkadmin.dto.TipoVehiculoDTO;
 
 @RestController
-@RequestMapping("/api/v1/vehiculos")
+@RequestMapping("/tipoVehiculo/")
 public final class TipoVehiculoController {
 
-    @GetMapping("/tiposVehiculos")
+    @GetMapping
     public ResponseEntity<TipoVehiculoResponse> consultar(){
 
         var httpStatusCode = HttpStatus.ACCEPTED;

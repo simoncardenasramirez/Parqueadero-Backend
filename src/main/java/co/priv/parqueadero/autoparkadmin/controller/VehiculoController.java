@@ -17,10 +17,10 @@ import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.
 import co.priv.parqueadero.autoparkadmin.dto.VehiculoDTO;
 
 @RestController
-@RequestMapping("/api/v1/vehiculos")
+@RequestMapping("/vehiculos/")
 public final class VehiculoController {
 
-    @GetMapping("/vehiculos")
+    @GetMapping
     public ResponseEntity<VehiculoResponse> consultar(){
 
         var httpStatusCode = HttpStatus.ACCEPTED;
@@ -49,7 +49,7 @@ public final class VehiculoController {
         return new ResponseEntity<>(vehiculoResponse, httpStatusCode);
     }
 
-    @PostMapping("/registarvehiculo")
+    @PostMapping
     public ResponseEntity<VehiculoResponse> registrar(@RequestBody VehiculoDTO vehiculo) {
 
         var httpStatusCode = HttpStatus.ACCEPTED;
