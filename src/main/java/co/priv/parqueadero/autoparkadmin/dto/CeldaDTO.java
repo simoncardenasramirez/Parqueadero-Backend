@@ -77,7 +77,6 @@ public class CeldaDTO {
 		this.parqueadero = ObjectHelper.getObjectHelper().getDefaultValue(parqueadero, new ParqueaderoDTO());
 		return this;
 	}
-
 	public final CeldaDTO setEstadoCelda(EstadoCeldaDTO estadoCelda) {
 		this.estadoCelda = ObjectHelper.getObjectHelper().getDefaultValue(estadoCelda, new EstadoCeldaDTO());
 		return this;
