@@ -12,14 +12,15 @@ import static co.priv.parqueadero.autoparkadmin.crosscutting.helpers.ObjectHelpe
 public class TipoVehiculoAssemblerEntity implements AssemblerEntity<TipoVehiculoDomain, TipoVehiculoEntity> {
 
 	private final static AssemblerEntity<TipoVehiculoDomain, TipoVehiculoEntity> instance = new TipoVehiculoAssemblerEntity();
-	
+
 	private TipoVehiculoAssemblerEntity() {
 		super();
 	}
-	
-	public static final AssemblerEntity<TipoVehiculoDomain, TipoVehiculoEntity> getInstance(){
+
+	public static final AssemblerEntity<TipoVehiculoDomain, TipoVehiculoEntity> getInstance() {
 		return instance;
 	}
+
 	@Override
 	public TipoVehiculoDomain toDomain(TipoVehiculoEntity data) {
 		var tipoVehiculoEntityTmp = getObjectHelper().getDefaultValue(data, TipoVehiculoEntity.build());
@@ -29,8 +30,8 @@ public class TipoVehiculoAssemblerEntity implements AssemblerEntity<TipoVehiculo
 	@Override
 	public TipoVehiculoEntity toEntity(TipoVehiculoDomain domain) {
 		var tipoVehiculoDomainTmp = getObjectHelper().getDefaultValue(domain, TipoVehiculoDomain.build());
-		// TODO Auto-generated method stub
-		return TipoVehiculoEntity.build().setId(tipoVehiculoDomainTmp.getId()).setNombre(tipoVehiculoDomainTmp.getNombre());
+		return TipoVehiculoEntity.build().setId(tipoVehiculoDomainTmp.getId())
+				.setNombre(tipoVehiculoDomainTmp.getNombre());
 	}
 
 	@Override
@@ -43,7 +44,7 @@ public class TipoVehiculoAssemblerEntity implements AssemblerEntity<TipoVehiculo
 	@Override
 	public List<TipoVehiculoEntity> toEntityCollection(List<TipoVehiculoDomain> domainCollection) {
 		var domainCollectionTmp = ObjectHelper.getObjectHelper().getDefaultValue(domainCollection,
-				new ArrayList<TipoVehiculoDomain>()); 	
+				new ArrayList<TipoVehiculoDomain>());
 		return domainCollectionTmp.stream().map(this::toEntity).toList();
 	}
 
