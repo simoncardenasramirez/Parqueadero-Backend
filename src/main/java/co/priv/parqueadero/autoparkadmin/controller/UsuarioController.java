@@ -10,73 +10,75 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.priv.parqueadero.autoparkadmin.business.facade.impl.vehiculo.ConsultarVehiculoFacade;
 import co.priv.parqueadero.autoparkadmin.business.facade.impl.vehiculo.RegistrarVehiculoFacade;
+import co.priv.parqueadero.autoparkadmin.business.facade.usuario.ConsultarUsuarioFacade;
+import co.priv.parqueadero.autoparkadmin.business.facade.usuario.RegistrarUsuarioFacade;
+import co.priv.parqueadero.autoparkadmin.controller.response.UsuarioResponse;
 import co.priv.parqueadero.autoparkadmin.controller.response.VehiculoResponse;
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.AUTOPARKADMINException;
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.MessageCatalogStrategy;
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.data.CodigoMensaje;
+import co.priv.parqueadero.autoparkadmin.dto.UsuarioDTO;
 import co.priv.parqueadero.autoparkadmin.dto.VehiculoDTO;
 
 @RestController
-@RequestMapping("/vehiculos/")
-public final class VehiculoController {
+@RequestMapping("/usuarios/")
+public final class UsuarioController {
 
 	@GetMapping
-	public ResponseEntity<VehiculoResponse> consultar() {
+	public ResponseEntity<UsuarioResponse> consultar() {
 
 		var httpStatusCode = HttpStatus.ACCEPTED;
-		var vehiculoResponse = new VehiculoResponse();
+		var usuarioResponse = new UsuarioResponse();
 
 		try {
-			var vehiculoDto = VehiculoDTO.build();
-			var facade = new ConsultarVehiculoFacade();
+			var usuarioDto = UsuarioDTO.build();
+			var facade = new ConsultarUsuarioFacade();     
 
-			vehiculoResponse.setDatos(facade.execute(vehiculoDto));
+			usuarioResponse.setDatos(facade.execute(usuarioDto));
 			var mensajeUsuario = "mensaje 59";
-			vehiculoResponse.getMensajes().add(mensajeUsuario);
+			usuarioResponse.getMensajes().add(mensajeUsuario);
 
 		} catch (final AUTOPARKADMINException exception) {
 			httpStatusCode = HttpStatus.BAD_REQUEST;
-			vehiculoResponse.getMensajes().add(exception.getMensajeUsuario());
+			usuarioResponse.getMensajes().add(exception.getMensajeUsuario());
 			exception.printStackTrace();
 
 		} catch (final Exception exception) {
 			httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
 			var mensajeUsuario = "mensaje 45";
-			vehiculoResponse.getMensajes().add(mensajeUsuario);
+			usuarioResponse.getMensajes().add(mensajeUsuario);
 
 			exception.printStackTrace();
 		}
-		return new ResponseEntity<>(vehiculoResponse, httpStatusCode);
+		return new ResponseEntity<>(usuarioResponse, httpStatusCode);
 	}
 
 	@PostMapping
-	public ResponseEntity<VehiculoResponse> registrar(@RequestBody VehiculoDTO vehiculo) {
+	public ResponseEntity<UsuarioResponse> registrar(@RequestBody UsuarioDTO usuario) {
 
 		var httpStatusCode = HttpStatus.ACCEPTED;
-		var vehiculoResponse = new VehiculoResponse();
+		var usuarioResponse = new UsuarioResponse();
 
-
-        try {
-            var facade = new RegistrarVehiculoFacade();
-            facade.execute(vehiculo);
-            var mensajeUsuario = "Vehiculo registrado exitosamente...";
-             vehiculoResponse.getMensajes().add(mensajeUsuario);
+		try {
+			var facade = new RegistrarUsuarioFacade(); // crear facade
+			facade.execute(usuario);
+			var mensajeUsuario = "mensaje 61";
+			usuarioResponse.getMensajes().add(mensajeUsuario);
 
 		} catch (final AUTOPARKADMINException excepcion) {
 			httpStatusCode = HttpStatus.BAD_REQUEST;
-			vehiculoResponse.getMensajes().add(excepcion.getMensajeUsuario());
+			usuarioResponse.getMensajes().add(excepcion.getMensajeUsuario());
 			excepcion.printStackTrace();
 		} catch (final Exception excepcion) {
 			httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
 
-
-            var mensajeUsuario = "Se ha presentado un problema tratando de registar el nuevo vehiculo";
-            vehiculoResponse.getMensajes().add(mensajeUsuario);
+			var mensajeUsuario = "mensaje 57";
+			usuarioResponse.getMensajes().add(mensajeUsuario);
 
 			excepcion.printStackTrace();
 		}
 
-		return new ResponseEntity<>(vehiculoResponse, httpStatusCode);
+		return new ResponseEntity<>(usuarioResponse, httpStatusCode);
 
 	}
 

@@ -1,11 +1,7 @@
 package co.priv.parqueadero.autoparkadmin.data.dao.factory.concrete;
 
-import java.beans.Statement;
-import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.UUID;
 
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.AUTOPARKADMINException;
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.custom.DataAUTOPARKADMINException;
@@ -13,6 +9,7 @@ import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.data.CodigoMensaje;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.SQLHelper;
 import co.priv.parqueadero.autoparkadmin.data.dao.entity.TipoVehiculoDAO;
+import co.priv.parqueadero.autoparkadmin.data.dao.entity.UsuarioDAO;
 import co.priv.parqueadero.autoparkadmin.data.dao.entity.VehiculoDAO;
 import co.priv.parqueadero.autoparkadmin.data.dao.entity.concrete.SqlConnection;
 import co.priv.parqueadero.autoparkadmin.data.dao.entity.concrete.postgresql.TipoVehiculoPostgreSqlDAO;
@@ -79,7 +76,13 @@ public final class PostgreSQLDAOFactory extends SqlConnection implements DAOFact
 	public TipoVehiculoDAO getTipoVehiculoDAO() {
 		return new TipoVehiculoPostgreSqlDAO(getConexion());
 	}
-	
+
+	@Override
+	public UsuarioDAO getUsuarioDAO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 //	public static void main(String[] args) {
 //	    Connection conexion = null;
 //	    try {
@@ -117,6 +120,5 @@ public final class PostgreSQLDAOFactory extends SqlConnection implements DAOFact
 //	        }
 //	    }
 //	}
-
 
 }
