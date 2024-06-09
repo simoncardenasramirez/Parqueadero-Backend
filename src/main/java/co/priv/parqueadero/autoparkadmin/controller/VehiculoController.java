@@ -58,7 +58,7 @@ public final class VehiculoController {
         try {
             var facade = new RegistrarVehiculoFacade();
             facade.execute(vehiculo);
-            var mensajeUsuario = "mensaje 61";
+            var mensajeUsuario = "Vehiculo registrado exitosamente...";
              vehiculoResponse.getMensajes().add(mensajeUsuario);
 
         } catch (final AUTOPARKADMINException excepcion) {
@@ -68,7 +68,7 @@ public final class VehiculoController {
         } catch (final Exception excepcion) {
             httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
 
-            var mensajeUsuario = "mensaje 57";
+            var mensajeUsuario = "Se ha presentado un problema tratando de registar el nuevo vehiculo";
             vehiculoResponse.getMensajes().add(mensajeUsuario);
 
             excepcion.printStackTrace();

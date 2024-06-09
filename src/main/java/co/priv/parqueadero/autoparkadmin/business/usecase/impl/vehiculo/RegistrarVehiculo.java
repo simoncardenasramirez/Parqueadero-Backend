@@ -1,6 +1,7 @@
 package co.priv.parqueadero.autoparkadmin.business.usecase.impl.vehiculo;
 
 import java.util.UUID;
+
 import co.priv.parqueadero.autoparkadmin.business.assembler.entity.impl.TipoVehiculoAssemblerEntity;
 import co.priv.parqueadero.autoparkadmin.business.domain.VehiculoDomain;
 import co.priv.parqueadero.autoparkadmin.business.usecase.UseCaseWithOutReturn;
@@ -8,6 +9,7 @@ import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.custom.Business
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.MessageCatalogStrategy;
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.data.CodigoMensaje;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.ObjectHelper;
+import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.UUIDHelper;
 import co.priv.parqueadero.autoparkadmin.data.dao.factory.DAOFactory;
 import co.priv.parqueadero.autoparkadmin.entity.TipoVehiculoEntity;
@@ -30,6 +32,9 @@ public final class RegistrarVehiculo implements UseCaseWithOutReturn<VehiculoDom
 
 	@Override
 	public void execute(final VehiculoDomain data) {
+		
+		validarMatricula(data.getMatricula());
+		validarTipoVehiculoExista(data.getTipoVehiculo().getId());
 		// 1. Validar que los casos de uso sean correctos a nivel de tipo de dato,
 		// longitud, obligatoriedad, formato, rango, etc...
 		validarFormatoMatricula(data.getMatricula());
@@ -61,7 +66,33 @@ public final class RegistrarVehiculo implements UseCaseWithOutReturn<VehiculoDom
 		}
 		return id;
 	}
+	
+    private void validarMatricula(String matricula) {
+        if (matricula == null) {
+            var mensajeUsuario = "La matricula no puede estar vacia";
+            var mensajeTecnico = "Los datos proporcionados, no cumplen con los requisitos (tipo de dato, obligaoriedad, longitud, formato y rango)...";
+            throw new BusinessAUTOPARKADMINException(mensajeTecnico, mensajeUsuario);
+        }
+        if (!validarLongitudAtributo(matricula, 1, 6)) {
+            var mensajeUsuario = "La matricula no puede estar vacia";
+            var mensajeTecnico = "Los datos proporcionados, no cumplen con los requisitos (tipo de dato, obligaoriedad, longitud, formato y rango)...";
+            throw new BusinessAUTOPARKADMINException(mensajeTecnico, mensajeUsuario);
+        }
 
+    }
+    
+	private void validarTipoVehiculoExista(final UUID idTipoVehiculo) {
+		var tipoVehiculoEntity = TipoVehiculoEntity.build().setId(idTipoVehiculo);
+		
+		var resultados = factory.getTipoVehiculoDAO().consultar(tipoVehiculoEntity);
+		
+		if (resultados.isEmpty()) {
+			var mensajeUsuario = "El tipo vehiculo no existe";
+			throw new BusinessAUTOPARKADMINException(mensajeUsuario);
+		}
+	}
+    
+    
 	private final void validarVehiculoMismaMatricula(final String matricula) {
 		var vehiculoEntity = VehiculoEntity.build().setMatricula(matricula);
 		var resultados = factory.getVehiculoDAO().consultar(vehiculoEntity);
@@ -80,15 +111,20 @@ public final class RegistrarVehiculo implements UseCaseWithOutReturn<VehiculoDom
 		}
 	}
 
-	private void validarTipoVehiculoExista(final UUID idTipoVehiculo) {
-		var tipoVehiculoEntity = TipoVehiculoEntity.build().setId(idTipoVehiculo);
-		
-		var resultados = factory.getTipoVehiculoDAO().consultar(tipoVehiculoEntity);
-		
-		if (resultados.isEmpty()) {
-			var mensajeUsuario = "El Tipo vehiculo al que desea asociar el vehiculo no existe";
-			throw new BusinessAUTOPARKADMINException(mensajeUsuario);
-		}
-	}
+//	private void validarTipoVehiculoExista(final UUID idTipoVehiculo) {
+//		var tipoVehiculoEntity = TipoVehiculoEntity.build().setId(idTipoVehiculo);
+//		
+//		var resultados = factory.getTipoVehiculoDAO().consultar(tipoVehiculoEntity);
+//		
+//		if (resultados.isEmpty()) {
+//			var mensajeUsuario = "El Tipo vehiculo al que desea asociar el vehiculo no existe";
+//			throw new BusinessAUTOPARKADMINException(mensajeUsuario);
+//		}
+//	}
+//	
+    private boolean validarLongitudAtributo(String atributo, int longitudMinima, int longitudMaxima) {
+        return TextHelper.longitudMinimaPermitida(atributo, longitudMinima) &&
+                TextHelper.longitudMaximaPermitida(atributo, longitudMaxima);
+    }
 
 }

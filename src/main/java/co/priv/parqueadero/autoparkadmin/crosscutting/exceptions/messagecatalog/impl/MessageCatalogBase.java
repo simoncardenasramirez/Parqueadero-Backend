@@ -110,7 +110,7 @@ public final class MessageCatalogBase implements MessageCatalog {
 		mensajes.put(CodigoMensaje.M00047.getIdentificador(),new Mensaje(CodigoMensaje.M00047,
 				"el tipo de vehículo consultado correctamente"));
 		mensajes.put(CodigoMensaje.M00048.getIdentificador(),new Mensaje(CodigoMensaje.M00048,
-				"El formato de la matrícula es incorrecto"));
+				"La matricula tiene que seguir el formato de 3 letras y 3 numeros: Ejemplo AAA000"));
 		mensajes.put(CodigoMensaje.M00049.getIdentificador(),new Mensaje(CodigoMensaje.M00049,
 				"El tipo del vehículo debe y no puede ser nulo..."));
 		mensajes.put(CodigoMensaje.M00050.getIdentificador(),new Mensaje(CodigoMensaje.M00050,

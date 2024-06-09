@@ -50,6 +50,14 @@ public final class TextHelper {
         }
         return mensajeReemplazado;
     }
+    
+    public static boolean longitudMinimaPermitida (final String valor, final int longitud) {
+        return applyTrim(valor).length()>= longitud;
+    }
+
+    public static boolean longitudMaximaPermitida (final String valor, final int longitud) {
+        return applyTrim(valor).length()<= longitud;
+    }
 	
 	
 	
