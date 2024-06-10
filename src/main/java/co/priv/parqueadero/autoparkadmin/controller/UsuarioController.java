@@ -55,7 +55,6 @@ public final class UsuarioController {
 
 		var httpStatusCode = HttpStatus.ACCEPTED;
 		var usuarioResponse = new UsuarioResponse();
-
 		try {
 			var facade = new RegistrarUsuarioFacade();
 			facade.execute(usuario);
