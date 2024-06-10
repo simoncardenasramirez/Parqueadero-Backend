@@ -1,4 +1,4 @@
-package co.priv.parqueadero.autoparkadmin.business.facade.usuario;
+package co.priv.parqueadero.autoparkadmin.business.facade.impl.usuario;
 
 import co.priv.parqueadero.autoparkadmin.business.assembler.dto.impl.UsuarioAssemblerDTO;
 import co.priv.parqueadero.autoparkadmin.business.assembler.dto.impl.VehiculoAssemblerDTO;
@@ -32,15 +32,14 @@ public final class RegistrarUsuarioFacade implements FacadeWithOutReturn<Usuario
 			
 			useCase.execute(usuarioDomain);
 			
-			//ejecutar caso de uso
 			daoFactory.confirmarTransaccion();
 		} catch (final AUTOPARKADMINException excepcion) {
 			daoFactory.cancelarTransaccion();
 			throw excepcion;
 		}catch (final Exception excepcion) {
 			daoFactory.cancelarTransaccion();
-			var mensajeUsuario="";
-			var mensajeTecnico="";
+			var mensajeUsuario="Se ha presentado un problema tratando de registrar la información";
+			var mensajeTecnico="Se ha presentado un problema INESPERADO tratando de registrar la información";
 			throw new BusinessAUTOPARKADMINException(mensajeTecnico,mensajeUsuario, excepcion);
 		}finally {
 			daoFactory.cerrarConexion();

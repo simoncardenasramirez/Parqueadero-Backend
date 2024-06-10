@@ -27,7 +27,7 @@ public final class TipoVehiculoController {
             var facade = new ConsultarTipoVehiculoFacade();
 
             tipoVehiculoResponse.setDatos(facade.execute(tipoVehiculoDto));
-            var mensajeUsuario = "mensaje 60";
+            var mensajeUsuario = "Tipos de vehiculo consultados exitosamente...";
             tipoVehiculoResponse.getMensajes().add(mensajeUsuario);
 
         }catch(final AUTOPARKADMINException excepcion) {
@@ -37,7 +37,7 @@ public final class TipoVehiculoController {
         }catch(final Exception excepcion) {
             httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
 
-            var mensajeUsuario = "mensaje 43";
+            var mensajeUsuario = "Se ha presentado un problema tratando de llevar a cabo la consulta de los tipos de vehiculo";
             tipoVehiculoResponse.getMensajes().add(mensajeUsuario);
 
             excepcion.printStackTrace();

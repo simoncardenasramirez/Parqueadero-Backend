@@ -26,8 +26,8 @@ public final class UsuarioAssemblerEntity implements AssemblerEntity<UsuarioDoma
 	
 	@Override
 	public final UsuarioDomain toDomain(final UsuarioEntity data) {
-		var usuarioEntityoTmp=getObjectHelper().getDefaultValue(data, UsuarioEntity.build());
-		return UsuarioDomain.build(usuarioEntityoTmp.getId(),usuarioEntityoTmp.getUsuario(),usuarioEntityoTmp.getContraseña());
+		var usuarioEntityTmp=getObjectHelper().getDefaultValue(data, UsuarioEntity.build());
+		return UsuarioDomain.build(usuarioEntityTmp.getId(),usuarioEntityTmp.getUsuario(),usuarioEntityTmp.getContraseña());
 	}
 
 	@Override

@@ -5,8 +5,6 @@ import java.util.UUID;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.UUIDHelper;
 
-import java.util.UUID;
-
 public final class TipoVehiculoDTO {
 	
 	private UUID id;
@@ -33,30 +31,21 @@ public final class TipoVehiculoDTO {
         return new TipoVehiculoDTO(id, TextHelper.EMPTY);
     }
 
-
 	public  UUID getId() {
 		return id;
 	}
-
 
 	public  TipoVehiculoDTO setId(final UUID id) {
 		this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
 		return this;
 	}
 
-
 	public  String getNombre() {
 		return nombre;
 	}
-
 
 	public  TipoVehiculoDTO setNombre(final String nombre) {
 		this.nombre =TextHelper.applyTrim(nombre);
 		return this;
 	}
-	
-	
-	
-	
-	
 }

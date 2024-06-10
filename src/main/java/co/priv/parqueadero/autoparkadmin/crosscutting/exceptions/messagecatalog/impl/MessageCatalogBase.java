@@ -115,7 +115,41 @@ public final class MessageCatalogBase implements MessageCatalog {
 				"El tipo del vehículo debe y no puede ser nulo..."));
 		mensajes.put(CodigoMensaje.M00050.getIdentificador(),new Mensaje(CodigoMensaje.M00050,
 				"El tipo del vehículo debe y no puede estar vacio..."));
-		
+
+
+		mensajes.put(CodigoMensaje.M00051.getIdentificador(),new Mensaje(CodigoMensaje.M00051,
+				"Se ha presentado un problema tratando de obtener la conexión con la base de datos PostgreSQL. Por favor revise la traza de errores para identificar y solucionar el problema..."));
+		mensajes.put(CodigoMensaje.M00052.getIdentificador(),new Mensaje(CodigoMensaje.M00052,
+				"Se ha presentado un problema INESPERADO tratando de obtener la conexión con la base de datos PostgreSQL. Por favor revise la traza de errores para identificar y solucionar el problema..."));
+
+
+
+//Agregados para volver para arreglar el orden de los mensajes
+		mensajes.put((CodigoMensaje.M00101.getIdentificador()),new Mensaje(CodigoMensaje.M00101,
+				"Se ha presentado un problema tratando de crear el vehiculo. Por favor intente de nuevo y si el problema persiste contacte con el administrador..."));
+
+		mensajes.put((CodigoMensaje.M00102.getIdentificador()), new Mensaje(CodigoMensaje.M00102,
+				"Se ha presentado una excepcion de tipo SQLException tratando de realizar el insert del vehiculo  en la tabla \"Vehiculo\" de la base de datos " +
+				"PostgreSQL. Para más detalles, revise de forma completa la excepción raíz presentada.."));
+
+		mensajes.put((CodigoMensaje.M00103.getIdentificador()), new Mensaje(CodigoMensaje.M00103,
+				"Se ha presentado un problema tratando de registrar el vehiculo \"%s\". Por favor intente de nuevo y si el problema persiste contacte con el administrador..."));
+
+		mensajes.put((CodigoMensaje.M00104.getIdentificador()), new Mensaje(CodigoMensaje.M00104,
+				"Se ha presentado un problema INESPERADO de tipo Exception tratando de realizar el insert del vehiculo  en la tabla \"Vehiculo\" de la base de datos PostgreSQL. Para más detalles, revise de forma completa la excepción raíz presentada.."));
+
+		mensajes.put((CodigoMensaje.M00105.getIdentificador()),new Mensaje(CodigoMensaje.M00105,
+				"Se ha presentado un problema tratando de consultar el vehiculo. Por favor, contacte al administrador del sistema."));
+
+		mensajes.put((CodigoMensaje.M00106.getIdentificador()),new Mensaje(CodigoMensaje.M00106,
+				"Se ha presentado una SQLException tratando de realizar la consulta de los vehiculos en la tabla \"Vehiculo\" de la base de datos PostgreSQL."));
+
+		mensajes.put((CodigoMensaje.M00107.getIdentificador()), new Mensaje(CodigoMensaje.M00107,
+				"Se ha presentado un problema tratando de consultar los vehiculos. Por favor, contacte al administrador del sistema."));
+
+		mensajes.put((CodigoMensaje.M00108.getIdentificador()), new Mensaje(CodigoMensaje.M00108,
+				"Se ha presentado un problema INESPERADO con una excepción de tipo Exception tratando de realizar la consulta de los vehiculos en la tabla \"Vehiculo\" de la base de datos PostgreSQL."));
+
 
 	}
 
@@ -145,11 +179,6 @@ public final class MessageCatalogBase implements MessageCatalog {
 			
 		}
 		
-		
-		// TODO: tarea: asegure que si tiene parametros, el contenido del mensaje se retorne  con los parametros reemplazados 
 		return mensajes.get(codigo.getIdentificador());
 	}
-
-
-
 }

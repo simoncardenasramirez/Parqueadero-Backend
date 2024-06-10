@@ -11,7 +11,7 @@ import static co.priv.parqueadero.autoparkadmin.crosscutting.helpers.ObjectHelpe
 
 public class TipoVehiculoAssemblerEntity implements AssemblerEntity<TipoVehiculoDomain, TipoVehiculoEntity> {
 
-	private final static AssemblerEntity<TipoVehiculoDomain, TipoVehiculoEntity> instance = new TipoVehiculoAssemblerEntity();
+	private static final AssemblerEntity<TipoVehiculoDomain, TipoVehiculoEntity> instance = new TipoVehiculoAssemblerEntity();
 
 	private TipoVehiculoAssemblerEntity() {
 		super();

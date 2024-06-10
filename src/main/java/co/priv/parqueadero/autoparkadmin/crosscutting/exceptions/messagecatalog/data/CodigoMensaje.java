@@ -54,9 +54,27 @@ public enum CodigoMensaje {
 	M00047(TipoMensaje.USUARIO, CategoriaMensaje.ERROR, "00047", true),
 	M00048(TipoMensaje.USUARIO, CategoriaMensaje.ERROR, "00048", true),
 	M00049(TipoMensaje.USUARIO, CategoriaMensaje.ERROR, "00049", true),
-	M00050(TipoMensaje.USUARIO, CategoriaMensaje.ERROR, "00050", true);
-	
-	
+	M00050(TipoMensaje.USUARIO, CategoriaMensaje.ERROR, "00050", true),
+
+
+	M00051(TipoMensaje.TECNICO, CategoriaMensaje.ERROR, "00051", true),
+	M00052(TipoMensaje.TECNICO, CategoriaMensaje.ERROR, "00052", true),
+
+
+
+//Agregados para volver para arreglar el orden de los mensajes
+	M00101(TipoMensaje.USUARIO, CategoriaMensaje.ERROR, "00101",true),
+	M00102(TipoMensaje.TECNICO,CategoriaMensaje.ERROR,"00102",true),
+	M00103(TipoMensaje.USUARIO, CategoriaMensaje.ERROR, "00103", true),
+	M00104(TipoMensaje.TECNICO, CategoriaMensaje.ERROR, "00104", true),
+	M00105(TipoMensaje.USUARIO, CategoriaMensaje.ERROR,"00105",true),
+	M00106(TipoMensaje.TECNICO,CategoriaMensaje.ERROR,"00106",true),
+	M00107(TipoMensaje.USUARIO, CategoriaMensaje.ERROR, "00107", true),
+	M00108(TipoMensaje.TECNICO, CategoriaMensaje.ERROR, "00108", true);
+
+
+
+
 	private TipoMensaje tipo;
 	private CategoriaMensaje categoria;
 	private String codigo;
@@ -103,8 +121,5 @@ public enum CodigoMensaje {
 	private final void setBase(boolean base) {
 		this.base = base;
 	}
-
-	
-
 	
 }

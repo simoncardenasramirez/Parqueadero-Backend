@@ -1,6 +1,7 @@
 package co.priv.parqueadero.autoparkadmin.data.dao.entity.concrete.postgresql;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,16 +10,12 @@ import java.util.List;
 import java.util.UUID;
 
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.custom.DataAUTOPARKADMINException;
-import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.MessageCatalogStrategy;
-import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.data.CodigoMensaje;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.ObjectHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.UUIDHelper;
 import co.priv.parqueadero.autoparkadmin.data.dao.entity.TipoVehiculoDAO;
-import co.priv.parqueadero.autoparkadmin.data.dao.entity.VehiculoDAO;
 import co.priv.parqueadero.autoparkadmin.data.dao.entity.concrete.SqlConnection;
 import co.priv.parqueadero.autoparkadmin.entity.TipoVehiculoEntity;
-import co.priv.parqueadero.autoparkadmin.entity.VehiculoEntity;
 
 public final class TipoVehiculoPostgreSqlDAO extends SqlConnection implements TipoVehiculoDAO {
 
@@ -61,14 +58,14 @@ public final class TipoVehiculoPostgreSqlDAO extends SqlConnection implements Ti
             }
 
         } catch (final SQLException exception) {
-            var mensajeUsuario = "mensaje 27";
-            var mensajeTecnico = "mensaje 28";
+            var mensajeUsuario = "Se ha presentado un problema tratando de consultar los tipos de vehiculo. Por favor, contacte al administrador del sistema.";
+            var mensajeTecnico = "Se ha presentado una SQLException tratando de realizar la consulta de los tipo de vehiculo en la tabla \"TipoVehiculo\" de la base de datos PostgreSQL.";
 
             throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, exception);
 
         } catch (final Exception exception) {
-            var mensajeUsuario = "mensaje 29";
-            var mensajeTecnico = "mensaje 30";
+            var mensajeUsuario = "Se ha presentado un problema tratando de consultar los tipo de vehiculo. Por favor, contacte al administrador del sistema.";
+            var mensajeTecnico = "Se ha presentado una SQLException tratando de realizar la consulta de los tipo de vehiculo en la tabla \"TipoVehiculo\" de la base de datos PostgreSQL.";
 
             throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, exception);
 

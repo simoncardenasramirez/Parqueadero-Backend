@@ -35,7 +35,7 @@ public class VehiculoDTO {
 		return id;
 	}
 
-	public VehiculoDTO setId(final UUID id) {
+	public final VehiculoDTO setId(final UUID id) {
 		this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
 		return this;
 	}
@@ -44,7 +44,7 @@ public class VehiculoDTO {
 		return matricula;
 	}
 
-	public VehiculoDTO setMatricula(final String matricula) {
+	public final VehiculoDTO setMatricula(final String matricula) {
 		this.matricula = TextHelper.applyTrim(matricula);
 		return this;
 	}
@@ -53,16 +53,9 @@ public class VehiculoDTO {
 		return tipoVehiculo;
 	}
 
-	public VehiculoDTO setTipoVehiculo(final TipoVehiculoDTO tipoVehiculo) {
-        this.tipoVehiculo = ObjectHelper.getObjectHelper().
-                getDefaultValue(tipoVehiculo, new TipoVehiculoDTO());
-        return this;
+	public final VehiculoDTO setTipoVehiculo(final TipoVehiculoDTO tipoVehiculo) {
+		this.tipoVehiculo = ObjectHelper.getObjectHelper().
+				getDefaultValue(tipoVehiculo, new TipoVehiculoDTO());
+		return this;
 	}
-	
-	
-	
-	
-	
-	
-
 }

@@ -2,7 +2,6 @@ package co.priv.parqueadero.autoparkadmin.dto;
 
 import java.util.UUID;
 
-import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.ObjectHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.UUIDHelper;
 
@@ -28,8 +27,6 @@ public class UsuarioDTO {
 	public static final UsuarioDTO build() {
 		return new UsuarioDTO();
 	}
-
-
 
 	public UUID getId() {
 		return id;
@@ -57,11 +54,4 @@ public class UsuarioDTO {
 		this.contraseña = TextHelper.applyTrim(contraseña);
 		return this;
 	}
-
-
-	
-	
-	
-	
-
 }

@@ -18,6 +18,7 @@ import co.priv.parqueadero.autoparkadmin.data.dao.entity.VehiculoDAO;
 import co.priv.parqueadero.autoparkadmin.data.dao.entity.concrete.SqlConnection;
 import co.priv.parqueadero.autoparkadmin.entity.TipoVehiculoEntity;
 import co.priv.parqueadero.autoparkadmin.entity.VehiculoEntity;
+import org.springframework.context.support.MessageSourceAccessor;
 
 public class VehiculoPostgreSqlDAO extends SqlConnection implements VehiculoDAO {
 
@@ -41,12 +42,12 @@ public class VehiculoPostgreSqlDAO extends SqlConnection implements VehiculoDAO 
             sentenciaSqlPreparada.executeUpdate();
 
         } catch (final SQLException excepcion) {
-            var mensajeUsuario ="mensaje 31";
-            var mensajeTecnico = "mensaje 32";
+            var mensajeUsuario =MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00101);
+            var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00102);
             throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, excepcion);
         } catch (final Exception excepcion) {
-            var mensajeUsuario = "mensaje 33";
-            var mensajeTecnico = "mensaje 34";
+            var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00103);
+            var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00104);
             throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, excepcion);
         }
     }
@@ -104,18 +105,17 @@ public class VehiculoPostgreSqlDAO extends SqlConnection implements VehiculoDAO 
                 }
             }
         } catch (final SQLException exception) {
-            var mensajeUsuario = "mensaje 35";
-            var mensajeTecnico = "mensaje 36";
+            var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00105);
+            var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00106);
 
             throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, exception);
         } catch (final Exception exception) {
-            var mensajeUsuario = "mensaje 37";
-            var mensajeTecnico = "mensaje 38";
+            var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00107);
+            var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00108);
 
             throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, exception);
         }
 
         return vehiculos;
     }
-
 }

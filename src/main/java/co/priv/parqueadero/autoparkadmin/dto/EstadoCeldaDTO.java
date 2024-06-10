@@ -5,8 +5,6 @@ import java.util.UUID;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.UUIDHelper;
 
-
-
 public final class EstadoCeldaDTO {
 
 	private UUID id;
@@ -44,5 +42,4 @@ public final class EstadoCeldaDTO {
 	public final String getNombre() {
 		return nombre;
 	}
-
 }

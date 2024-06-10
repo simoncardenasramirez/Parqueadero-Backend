@@ -15,8 +15,8 @@ public class ConsultarUsuario implements UseCaseWithReturn<UsuarioDomain, List<U
 
 	public ConsultarUsuario(final DAOFactory factory) {
 		if (ObjectHelper.getObjectHelper().isNull(factory)) {
-			var mensajeUsuario = "No se pudo crear el objeto ConsultarUsuario. El DAOFactory proporcionado es nulo.";
-			var mensajeTecnico = "El parámetro factory pasado al constructor ConsultarUsuario es nulo.";
+			var mensajeUsuario = "Se ha presentado un problema tratando de llevar a cabo la consulta de los usuarios...";
+			var mensajeTecnico = "El dao factory para consultar los usuarios llegó nulo...";
 			throw new BusinessAUTOPARKADMINException(mensajeTecnico, mensajeUsuario);
 		}
 		this.factory = factory;
@@ -25,11 +25,9 @@ public class ConsultarUsuario implements UseCaseWithReturn<UsuarioDomain, List<U
 	@Override
 	public List<UsuarioDomain> execute(UsuarioDomain data) {
 		var usuarioEntityFilter = UsuarioAssemblerEntity.getInstance().toEntity(data);
-		var resultadosEntity = factory.getUsuarioDAO().consultar(usuarioEntityFilter);
+		var resultadosEntity = factory.getUsuarioDAO().consultar(usuarioEntityFilter); 
 
-		var resultadosDomain = UsuarioAssemblerEntity.getInstance().toDomainCollection(resultadosEntity);
-
-		return resultadosDomain;
+		return UsuarioAssemblerEntity.getInstance().toDomainCollection(resultadosEntity);
 	}
 
 }

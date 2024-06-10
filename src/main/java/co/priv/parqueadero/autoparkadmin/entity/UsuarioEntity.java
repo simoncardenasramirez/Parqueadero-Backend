@@ -2,7 +2,6 @@ package co.priv.parqueadero.autoparkadmin.entity;
 
 import java.util.UUID;
 
-import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.ObjectHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.UUIDHelper;
 
@@ -57,11 +56,4 @@ public class UsuarioEntity {
 		this.contraseña = TextHelper.applyTrim(contraseña);
 		return this;
 	}
-
-
-	
-	
-	
-	
-
 }

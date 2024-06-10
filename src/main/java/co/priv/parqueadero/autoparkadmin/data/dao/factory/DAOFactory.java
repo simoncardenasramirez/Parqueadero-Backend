@@ -26,5 +26,4 @@ public interface DAOFactory {
 	TipoVehiculoDAO getTipoVehiculoDAO();
 	
 	UsuarioDAO getUsuarioDAO();
-
 }

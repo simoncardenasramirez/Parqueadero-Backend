@@ -5,7 +5,6 @@ import java.util.UUID;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.UUIDHelper;
 
-
 public final class ParqueaderoDTO {
 
 	private UUID id;
@@ -43,5 +42,4 @@ public final class ParqueaderoDTO {
 	public final String getNombre() {
 		return nombre;
 	}
-
 }

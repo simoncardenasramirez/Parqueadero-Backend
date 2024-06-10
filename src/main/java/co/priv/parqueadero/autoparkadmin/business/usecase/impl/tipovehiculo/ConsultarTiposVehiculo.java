@@ -15,8 +15,8 @@ public class ConsultarTiposVehiculo implements UseCaseWithReturn<TipoVehiculoDom
 
     public ConsultarTiposVehiculo(final DAOFactory factory) {
         if(ObjectHelper.getObjectHelper().isNull(factory)) {
-            var mensajeUsuario = "Se ha presentado un problema tratando de llevar a cabo la consulta de los tipos de sede...";
-            var mensajeTecnico = "El dao factory para consultar el tipo de sede llegó nulo...";
+            var mensajeUsuario = "Se ha presentado un problema tratando de llevar a cabo la consulta de los tipos de vehiculo...";
+            var mensajeTecnico = "El dao factory para consultar el tipo de vehiculo llegó nulo...";
             throw new BusinessAUTOPARKADMINException(mensajeUsuario, mensajeTecnico);
         }
         

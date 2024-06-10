@@ -12,48 +12,38 @@ import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.
 import co.priv.parqueadero.autoparkadmin.data.dao.factory.DAOFactory;
 import co.priv.parqueadero.autoparkadmin.dto.VehiculoDTO;
 
-public final class ConsultarVehiculoFacade implements FacadeWithReturn<VehiculoDTO, List<VehiculoDTO>>{
-	
-	
+public final class ConsultarVehiculoFacade implements FacadeWithReturn<VehiculoDTO, List<VehiculoDTO>> {
 
 	private DAOFactory daoFactory;
-	
-	
+
 	public ConsultarVehiculoFacade() {
 		daoFactory = DAOFactory.getFactory();
 	}
 
-	
+	@Override
+	public final List<VehiculoDTO> execute(final VehiculoDTO dto) {
+		daoFactory.iniciarTransaccion();
+		try {
 
-	 @Override
-	    public final List<VehiculoDTO> execute(final VehiculoDTO dto) {
-	        daoFactory.iniciarTransaccion();
-	        try{
+			var useCase = new ConsultarVehiculos(daoFactory);
+			var ciudadDomain = VehiculoAssemblerDTO.getInstance().toDomain(dto);
+			var resultadosDomain = useCase.execute(ciudadDomain);
 
-	            var useCase = new ConsultarVehiculos(daoFactory);
-	            var ciudadDomain = VehiculoAssemblerDTO.getInstance().toDomain(dto);
-	            var resultadosDomain = useCase.execute(ciudadDomain);
-	            
-	            return VehiculoAssemblerDTO.getInstance().toDTOCollection(resultadosDomain);
-	            
-	        }catch (final AUTOPARKADMINException exception){
-	            
-	            throw exception;
-	        }catch (final Exception exception){
-	            
-	            var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje( CodigoMensaje.M00024);
-	            var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00025);
+			return VehiculoAssemblerDTO.getInstance().toDTOCollection(resultadosDomain);
 
-	            throw new BusinessAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, exception);
-	            
-	        }finally {
-	            daoFactory.cerrarConexion();
-	        }
-	    }
+		} catch (final AUTOPARKADMINException exception) {
 
+			throw exception;
+		} catch (final Exception exception) {
 
+			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00024);
+			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00025);
 
+			throw new BusinessAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, exception);
 
-	
-	
+		} finally {
+			daoFactory.cerrarConexion();
+		}
+	}
+
 }

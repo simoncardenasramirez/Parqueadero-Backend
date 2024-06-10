@@ -54,15 +54,8 @@ public class VehiculoEntity {
 	}
 
 	public VehiculoEntity setTipoVehiculo(final TipoVehiculoEntity tipoVehiculo) {
-        this.tipoVehiculo = ObjectHelper.getObjectHelper().
-                getDefaultValue(tipoVehiculo, new TipoVehiculoEntity());
-        return this;
+		this.tipoVehiculo = ObjectHelper.getObjectHelper().
+				getDefaultValue(tipoVehiculo, new TipoVehiculoEntity());
+		return this;
 	}
-	
-	
-	
-	
-	
-	
-
 }

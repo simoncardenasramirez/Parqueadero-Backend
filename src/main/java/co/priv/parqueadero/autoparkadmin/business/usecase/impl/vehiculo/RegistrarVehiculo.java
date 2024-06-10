@@ -42,7 +42,7 @@ public final class RegistrarVehiculo implements UseCaseWithOutReturn<VehiculoDom
 		// 2. Validar que no exista otro vehículo con la misma matrícula
 		validarVehiculoMismaMatricula(data.getMatricula());
 
-		// 3. Validar que el vehiculo tenga un tipo de vehiculo
+		// 3. Validar que el tipo de vehiculo exista
 		validarTipoVehiculoExista(data.getTipoVehiculo().getId());
 
 		var vehiculoEntity = VehiculoEntity.build().setId(generarIdentificadorVehiculo())
