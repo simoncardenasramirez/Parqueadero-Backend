@@ -7,7 +7,6 @@ import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.UUIDHelper;
 
 public class CeldaDTO {
-	
 	private UUID id;
 	private String nombre;
 	private TipoVehiculoDTO tipoVehiculo;
