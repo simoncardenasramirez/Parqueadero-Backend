@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.custom.DataAUTOPARKADMINException;
+import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.MessageCatalogStrategy;
+import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.data.CodigoMensaje;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.ObjectHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.UUIDHelper;
@@ -38,12 +40,12 @@ public class UsuarioPostgreSqlDAO extends SqlConnection implements UsuarioDAO {
 			sentenciaSqlPreparada.executeUpdate();
 
 		} catch (final SQLException excepcion) {
-			var mensajeUsuario = "Error al crear usuario. Por favor, inténtelo de nuevo más tarde.";
-			var mensajeTecnico = "Se produjo un error al ejecutar la consulta SQL de inserción.";
+			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00053);
+			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00054);
 			throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, excepcion);
 		} catch (final Exception excepcion) {
-			var mensajeUsuario = "Error al crear usuario. Por favor, inténtelo de nuevo más tarde.";
-			var mensajeTecnico = "Se produjo un error inesperado durante la creación del usuario.";
+			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00055);
+			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00056);
 			throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, excepcion);
 		}
 	}
@@ -84,12 +86,12 @@ public class UsuarioPostgreSqlDAO extends SqlConnection implements UsuarioDAO {
 				}
 			}
 		} catch (final SQLException exception) {
-			var mensajeUsuario = "Se ha presentado un problema tratando de consultar los usuarios. Por favor, contacte al administrador del sistema.";
-			var mensajeTecnico = "Se ha presentado una SQLException tratando de realizar la consulta de los usuarios en la tabla \"Usuario\" de la base de datos PostgreSQL.";
+			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00057);
+			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00058);
 			throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, exception);
 		} catch (final Exception exception) {
-			var mensajeUsuario = "Se ha presentado un problema tratando de consultar los usuarios. Por favor, contacte al administrador del sistema.";
-			var mensajeTecnico = "Se ha presentado un problema INESPERADO con una excepción de tipo Exception tratando de realizar la consulta de los usuarios en la tabla \"Usuario\" de la base de datos PostgreSQL.";
+			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00059);
+			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00060);
 			throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, exception);
 		}
 
@@ -109,15 +111,45 @@ public class UsuarioPostgreSqlDAO extends SqlConnection implements UsuarioDAO {
                 return resultado.next();
             }
         } catch (SQLException exception) {
-            var mensajeUsuario = "Se ha presentado un problema tratando de autenticar los usuarios. Por favor, contacte al administrador del sistema.";
-            var mensajeTecnico = "Se ha presentado un problema ejecutando la sentencia SQL en la base de datos PostgreSQL";
+            var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00061);
+            var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00062);
             throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, exception);
         } catch (final Exception exception) {
-            var mensajeUsuario = "Se ha presentado un problema tratando de autenticar los usuarios. Por favor, contacte al administrador del sistema.";
-            var mensajeTecnico = "Se ha presentado un INESPERADO problema ejecutando la sentencia SQL en la base de datos PostgreSQL";
+            var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00063);
+            var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00064);
 
             throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, exception);
         }
     }
+	
+    @Override
+    public UsuarioEntity consultarPorNombreUsuario(final String nombreUsuario) {
+        final StringBuilder sentenciaSql = new StringBuilder();
+        sentenciaSql.append("SELECT id, usuario, contraseña FROM Usuario WHERE usuario = ?");
+
+        try (final PreparedStatement sentenciaPreparada = getConexion().prepareStatement(sentenciaSql.toString())) {
+            sentenciaPreparada.setString(1, nombreUsuario);
+
+            try (final ResultSet resultado = sentenciaPreparada.executeQuery()) {
+                if (resultado.next()) {
+                    return UsuarioEntity.build()
+                            .setId(UUID.fromString(resultado.getString("id")))
+                            .setUsuario(resultado.getString("usuario"))
+                            .setContraseña(resultado.getString("contraseña"));
+                } else {
+                    return null;
+                }
+            }
+        } catch (SQLException exception) {
+            var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00065);
+            var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00066);
+            throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, exception);
+        } catch (final Exception exception) {
+            var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00067);
+            var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00068);
+            throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, exception);
+        }
+    }
 }
+
 

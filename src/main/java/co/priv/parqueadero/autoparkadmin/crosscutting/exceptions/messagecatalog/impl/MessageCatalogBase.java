@@ -124,6 +124,326 @@ public final class MessageCatalogBase implements MessageCatalog {
 
 
 
+		mensajes.put(CodigoMensaje.M00053.getIdentificador(),new Mensaje(CodigoMensaje.M00053,
+				"Error al crear usuario. Por favor, inténtelo de nuevo más tarde."));
+
+		mensajes.put(CodigoMensaje.M00054.getIdentificador(),new Mensaje(CodigoMensaje.M00054,
+				"Se produjo un error al ejecutar la consulta SQL de inserción."));
+
+		mensajes.put(CodigoMensaje.M00055.getIdentificador(),new Mensaje(CodigoMensaje.M00055,
+				"Error al crear usuario. Por favor, inténtelo de nuevo más tarde."));
+
+		mensajes.put(CodigoMensaje.M00056.getIdentificador(),new Mensaje(CodigoMensaje.M00056,
+				"Se produjo un error inesperado durante la creación del usuario."));
+
+		mensajes.put(CodigoMensaje.M00057.getIdentificador(),new Mensaje(CodigoMensaje.M00057,
+				"Se ha presentado un problema tratando de consultar los usuarios. Por favor, contacte al administrador del sistema."));
+
+		mensajes.put(CodigoMensaje.M00058.getIdentificador(),new Mensaje(CodigoMensaje.M00058,
+				"Se ha presentado una SQLException tratando de realizar la consulta de los usuarios en la tabla \"Usuario\" de la base de datos PostgreSQL."));
+
+		mensajes.put(CodigoMensaje.M00059.getIdentificador(),new Mensaje(CodigoMensaje.M00059,
+				"Se ha presentado un problema tratando de consultar los usuarios. Por favor, contacte al administrador del sistema."));
+
+		mensajes.put(CodigoMensaje.M00060.getIdentificador(),new Mensaje(CodigoMensaje.M00060,
+				"Se ha presentado un problema INESPERADO con una excepción de tipo Exception tratando de realizar la consulta de los usuarios en la tabla \"Usuario\" de la base de datos PostgreSQL."));
+
+		mensajes.put(CodigoMensaje.M00061.getIdentificador(),new Mensaje(CodigoMensaje.M00061,
+				"Se ha presentado un problema tratando de autenticar los usuarios. Por favor, contacte al administrador del sistema."));
+
+		mensajes.put(CodigoMensaje.M00062.getIdentificador(),new Mensaje(CodigoMensaje.M00062,
+				"Se ha presentado un problema ejecutando la sentencia SQL en la base de datos PostgreSQL"));
+
+		mensajes.put(CodigoMensaje.M00063.getIdentificador(),new Mensaje(CodigoMensaje.M00063,
+				"Se ha presentado un problema tratando de autenticar los usuarios. Por favor, contacte al administrador del sistema."));
+
+		mensajes.put(CodigoMensaje.M00064.getIdentificador(),new Mensaje(CodigoMensaje.M00064,
+				"Se ha presentado un INESPERADO problema ejecutando la sentencia SQL en la base de datos PostgreSQL"));
+
+		mensajes.put(CodigoMensaje.M00065.getIdentificador(),new Mensaje(CodigoMensaje.M00065,
+				"Se ha presentado un problema tratando de consultar los usuarios. Por favor, contacte al administrador del sistema."));
+
+		mensajes.put(CodigoMensaje.M00066.getIdentificador(),new Mensaje(CodigoMensaje.M00066,
+				"Se ha presentado una SQLException tratando de realizar la consulta de los usuarios en la tabla \"Usuario\" de la base de datos PostgreSQL."));
+
+		mensajes.put(CodigoMensaje.M00067.getIdentificador(),new Mensaje(CodigoMensaje.M00067,
+				"Se ha presentado un problema tratando de consultar los usuarios. Por favor, contacte al administrador del sistema."));
+
+		mensajes.put(CodigoMensaje.M00068.getIdentificador(),new Mensaje(CodigoMensaje.M00068,
+				"Se ha presentado un problema INESPERADO con una excepción de tipo Exception tratando de realizar la consulta de los usuarios en la tabla \"Usuario\" de la base de datos PostgreSQL."));
+
+		mensajes.put(CodigoMensaje.M00069.getIdentificador(),new Mensaje(CodigoMensaje.M00069,
+				"Se ha presentado un problema tratando de consultar los tipos de vehiculo. Por favor, contacte al administrador del sistema."));
+
+		mensajes.put(CodigoMensaje.M00070.getIdentificador(),new Mensaje(CodigoMensaje.M00070,
+				"Se ha presentado una SQLException tratando de realizar la consulta de los tipo de vehiculo en la tabla \"TipoVehiculo\" de la base de datos PostgreSQL."));
+
+		mensajes.put(CodigoMensaje.M00071.getIdentificador(),new Mensaje(CodigoMensaje.M00071,
+				"Se ha presentado un problema tratando de consultar los tipo de vehiculo. Por favor, contacte al administrador del sistema."));
+
+		mensajes.put(CodigoMensaje.M00072.getIdentificador(),new Mensaje(CodigoMensaje.M00072,
+				"Se ha presentado una SQLException tratando de realizar la consulta de los tipo de vehiculo en la tabla \"TipoVehiculo\" de la base de datos PostgreSQL."));
+
+		mensajes.put(CodigoMensaje.M00073.getIdentificador(),new Mensaje(CodigoMensaje.M00073,
+				"Se ha presentado un problema al consultar la información del parqueadero"));
+
+		mensajes.put(CodigoMensaje.M00074.getIdentificador(),new Mensaje(CodigoMensaje.M00074,
+				"Se ha presentado una SQLException tratando de realizar la consulta de los parqueaderos en la tabla \"Parqueadero\" de la base de datos."));
+
+		mensajes.put(CodigoMensaje.M00075.getIdentificador(),new Mensaje(CodigoMensaje.M00075,
+				"Se ha presentado un problema al consultar la información del parqueadero"));
+
+		mensajes.put(CodigoMensaje.M00076.getIdentificador(),new Mensaje(CodigoMensaje.M00076,
+				"Se ha presentado una SQLException tratando de realizar la consulta de los parqueaderos en la tabla \"Parqueadero\" de la base de datos."));
+
+		mensajes.put(CodigoMensaje.M00077.getIdentificador(),new Mensaje(CodigoMensaje.M00077,
+				"Se ha presentado una SQLException tratando de realizar la consulta de los estados de celda en la tabla \"EstadoCelda\" de la base de datos."));
+
+		mensajes.put(CodigoMensaje.M00078.getIdentificador(),new Mensaje(CodigoMensaje.M00078,
+				"Se ha presentado un problema al consultar la información de los estados de celda"));
+
+		mensajes.put(CodigoMensaje.M00079.getIdentificador(),new Mensaje(CodigoMensaje.M00079,
+				"Se ha presentado una SQLException tratando de realizar la consulta de los estados de celda en la tabla \"EstadoCelda\" de la base de datos."));
+
+		mensajes.put(CodigoMensaje.M00080.getIdentificador(),new Mensaje(CodigoMensaje.M00080,
+				"Se ha presentado un problema tratando de crear la celda. Por favor, inténtelo de nuevo y si el problema persiste, contacte con el administrador."));
+
+		mensajes.put(CodigoMensaje.M00081.getIdentificador(),new Mensaje(CodigoMensaje.M00081,
+				"Se ha presentado una excepción de tipo SQLException tratando de realizar el insert de la celda en la tabla \"Celda\" de la base de datos PostgreSQL. Para más detalles, revise de forma completa la excepción raíz presentada."));
+
+		mensajes.put(CodigoMensaje.M00082.getIdentificador(),new Mensaje(CodigoMensaje.M00082,
+				"Se ha presentado un problema tratando de crear la celda. Por favor, inténtelo de nuevo y si el problema persiste, contacte con el administrador."));
+
+		mensajes.put(CodigoMensaje.M00083.getIdentificador(),new Mensaje(CodigoMensaje.M00083,
+				"Se ha presentado un problema inesperado de tipo Exception tratando de realizar el insert de la celda en la tabla \"Celda\" de la base de datos PostgreSQL. Para más detalles, revise de forma completa la excepción raíz presentada."));
+
+		mensajes.put(CodigoMensaje.M00084.getIdentificador(),new Mensaje(CodigoMensaje.M00084,
+				"Se ha presentado un problema al consultar la información de las celdas"));
+
+		mensajes.put(CodigoMensaje.M00085.getIdentificador(),new Mensaje(CodigoMensaje.M00085,
+				"Se ha presentado una SQLException tratando de realizar la consulta de las celdas en la tabla \"Celda\" de la base de datos."));
+
+		mensajes.put(CodigoMensaje.M00086.getIdentificador(),new Mensaje(CodigoMensaje.M00086,
+				"Se ha presentado un problema al consultar la información de las celdas"));
+
+		mensajes.put(CodigoMensaje.M00087.getIdentificador(),new Mensaje(CodigoMensaje.M00087,
+				"Se ha presentado una SQLException tratando de realizar la consulta de las celdas en la tabla \"Celda\" de la base de datos."));
+
+
+		/*
+		mensajes.put(CodigoMensaje.M00088.getIdentificador(),new Mensaje(CodigoMensaje.M00088,
+				));
+
+
+		mensajes.put(CodigoMensaje.M00089.getIdentificador(),new Mensaje(CodigoMensaje.M00089,
+				));
+
+		mensajes.put(CodigoMensaje.M00090.getIdentificador(),new Mensaje(CodigoMensaje.M00090,
+				));
+
+		mensajes.put(CodigoMensaje.M00091.getIdentificador(),new Mensaje(CodigoMensaje.M00091,
+				));
+
+		mensajes.put(CodigoMensaje.M00092.getIdentificador(),new Mensaje(CodigoMensaje.M00092,
+				));
+
+		mensajes.put(CodigoMensaje.M00093.getIdentificador(),new Mensaje(CodigoMensaje.M00093,
+				));
+
+		mensajes.put(CodigoMensaje.M00094.getIdentificador(),new Mensaje(CodigoMensaje.M00094,
+				));
+
+		mensajes.put(CodigoMensaje.M00095.getIdentificador(),new Mensaje(CodigoMensaje.M00095,
+				));
+
+		mensajes.put(CodigoMensaje.M00096.getIdentificador(),new Mensaje(CodigoMensaje.M00096,
+				));
+
+		mensajes.put(CodigoMensaje.M00097.getIdentificador(),new Mensaje(CodigoMensaje.M00097,
+				));
+
+		mensajes.put(CodigoMensaje.M00098.getIdentificador(),new Mensaje(CodigoMensaje.M00098,
+				));
+
+		mensajes.put(CodigoMensaje.M00099.getIdentificador(),new Mensaje(CodigoMensaje.M00099,
+				));
+
+		mensajes.put(CodigoMensaje.M00115.getIdentificador(),new Mensaje(CodigoMensaje.M00115,
+				));
+
+		mensajes.put(CodigoMensaje.M00116.getIdentificador(),new Mensaje(CodigoMensaje.M00116,
+				));
+
+		mensajes.put(CodigoMensaje.M00117.getIdentificador(),new Mensaje(CodigoMensaje.M00117,
+				));
+
+		mensajes.put(CodigoMensaje.M00118.getIdentificador(),new Mensaje(CodigoMensaje.M00118,
+				));
+
+		mensajes.put(CodigoMensaje.M00119.getIdentificador(),new Mensaje(CodigoMensaje.M00119,
+				));
+
+		mensajes.put(CodigoMensaje.M00120.getIdentificador(),new Mensaje(CodigoMensaje.M00120,
+				));
+
+		mensajes.put(CodigoMensaje.M00121.getIdentificador(),new Mensaje(CodigoMensaje.M00121,
+				));
+
+		mensajes.put(CodigoMensaje.M00122.getIdentificador(),new Mensaje(CodigoMensaje.M00122,
+				));
+
+		mensajes.put(CodigoMensaje.M00123.getIdentificador(),new Mensaje(CodigoMensaje.M00123,
+				));
+
+		mensajes.put(CodigoMensaje.M00124.getIdentificador(),new Mensaje(CodigoMensaje.M00124,
+				));
+
+		mensajes.put(CodigoMensaje.M00125.getIdentificador(),new Mensaje(CodigoMensaje.M00125,
+				));
+
+		mensajes.put(CodigoMensaje.M00126.getIdentificador(),new Mensaje(CodigoMensaje.M00126,
+				));
+
+		mensajes.put(CodigoMensaje.M00127.getIdentificador(),new Mensaje(CodigoMensaje.M00127,
+				));
+
+		mensajes.put(CodigoMensaje.M00128.getIdentificador(),new Mensaje(CodigoMensaje.M00128,
+				));
+
+		mensajes.put(CodigoMensaje.M00129.getIdentificador(),new Mensaje(CodigoMensaje.M00129,
+				));
+
+
+
+
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+		mensajes.put(CodigoMensaje..getIdentificador(),new Mensaje(CodigoMensaje.,
+				));
+
+
+
+		 */
+
+
+
+
+
+
+
+
+
+
+
+
 //Agregados para volver para arreglar el orden de los mensajes
 		mensajes.put((CodigoMensaje.M00101.getIdentificador()),new Mensaje(CodigoMensaje.M00101,
 				"Se ha presentado un problema tratando de crear el vehiculo. Por favor intente de nuevo y si el problema persiste contacte con el administrador..."));
@@ -150,6 +470,8 @@ public final class MessageCatalogBase implements MessageCatalog {
 		mensajes.put((CodigoMensaje.M00108.getIdentificador()), new Mensaje(CodigoMensaje.M00108,
 				"Se ha presentado un problema INESPERADO con una excepción de tipo Exception tratando de realizar la consulta de los vehiculos en la tabla \"Vehiculo\" de la base de datos PostgreSQL."));
 
+		mensajes.put(CodigoMensaje.M00109.getIdentificador(),new Mensaje(CodigoMensaje.M00109,
+				"Se ha presentado un problema al consultar la información de los estados de celda"));
 
 	}
 

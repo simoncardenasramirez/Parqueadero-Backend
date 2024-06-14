@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.UUID;
 
 import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.custom.DataAUTOPARKADMINException;
+import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.MessageCatalogStrategy;
+import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.messagecatalog.data.CodigoMensaje;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.ObjectHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.UUIDHelper;
@@ -58,14 +60,14 @@ public final class TipoVehiculoPostgreSqlDAO extends SqlConnection implements Ti
             }
 
         } catch (final SQLException exception) {
-            var mensajeUsuario = "Se ha presentado un problema tratando de consultar los tipos de vehiculo. Por favor, contacte al administrador del sistema.";
-            var mensajeTecnico = "Se ha presentado una SQLException tratando de realizar la consulta de los tipo de vehiculo en la tabla \"TipoVehiculo\" de la base de datos PostgreSQL.";
+            var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00069);
+            var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00070);
 
             throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, exception);
 
         } catch (final Exception exception) {
-            var mensajeUsuario = "Se ha presentado un problema tratando de consultar los tipo de vehiculo. Por favor, contacte al administrador del sistema.";
-            var mensajeTecnico = "Se ha presentado una SQLException tratando de realizar la consulta de los tipo de vehiculo en la tabla \"TipoVehiculo\" de la base de datos PostgreSQL.";
+            var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00071);
+            var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00072);
 
             throw new DataAUTOPARKADMINException(mensajeTecnico, mensajeUsuario, exception);
 

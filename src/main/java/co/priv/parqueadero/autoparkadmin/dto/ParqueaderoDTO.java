@@ -2,44 +2,46 @@ package co.priv.parqueadero.autoparkadmin.dto;
 
 import java.util.UUID;
 
+
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.TextHelper;
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.UUIDHelper;
 
-public final class ParqueaderoDTO {
+public class ParqueaderoDTO {
+    
+    private UUID id;
+    private String nombre;
 
-	private UUID id;
-	private String nombre;
+    public ParqueaderoDTO() {
+        super();
+        setId(UUIDHelper.getDefault());
+        setNombre(TextHelper.EMPTY);
+    }
 
-	public ParqueaderoDTO() {
-		super();
-		setId(UUIDHelper.getDefault());
-		setNombre(TextHelper.EMPTY);
-	}
+    public ParqueaderoDTO(final UUID id, final String nombre) {
+        setId(id);
+        setNombre(nombre);
+    }
 
-	public ParqueaderoDTO(final UUID id, final String nombre) {
-		setId(id);
-		setNombre(nombre);
-	}
-	
-	public static final ParqueaderoDTO build() {
-		return new ParqueaderoDTO();
-	}
+    public static ParqueaderoDTO build() {
+        return new ParqueaderoDTO();
+    }
 
-	public final ParqueaderoDTO setId(final UUID id) {
-		this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
-		return this;
-	}
+    public UUID getId() {
+        return id;
+    }
 
-	public final ParqueaderoDTO setNombre(final String nombre) {
-		this.nombre = TextHelper.applyTrim(nombre);
-		return this;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	public final UUID getId() {
-		return id;
-	}
+    public ParqueaderoDTO setId(UUID id) {
+        this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
+        return this;
+    }
 
-	public final String getNombre() {
-		return nombre;
-	}
+    public ParqueaderoDTO setNombre(String nombre) {
+        this.nombre = TextHelper.applyTrim(nombre);
+        return this;
+    }
 }
+

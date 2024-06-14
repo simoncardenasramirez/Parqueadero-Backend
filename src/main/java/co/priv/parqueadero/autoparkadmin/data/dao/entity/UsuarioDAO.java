@@ -4,5 +4,6 @@ import co.priv.parqueadero.autoparkadmin.entity.UsuarioEntity;
 
 public interface UsuarioDAO extends CreateDAO<UsuarioEntity>, RetrieveDAO<UsuarioEntity> {
 	boolean autenticarUsuario(String usuario, String contraseña);
+	UsuarioEntity consultarPorNombreUsuario(String nombreUsuario);
 
 }

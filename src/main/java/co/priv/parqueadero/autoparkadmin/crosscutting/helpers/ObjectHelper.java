@@ -19,5 +19,7 @@ public final class ObjectHelper {
 	public <O> O getDefaultValue(O objeto,O valorDefecto) {
 		return isNull(objeto) ? valorDefecto : objeto;
 	}
+	
+	
 
 }

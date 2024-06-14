@@ -29,8 +29,8 @@ public class AutenticarUsuarioFacade implements FacadeWithReturn<UsuarioDTO, Boo
             throw exception;
         } catch (Exception exception) {
             daoFactory.cancelarTransaccion();
-            var mensajeUsuario = "Se ha presentado un problema tratando de autenticar el usuario";
-            var mensajeTecnico = "Se ha presentado un problema INESPERADO tratando de autenticar el usuario";
+            var mensajeUsuario = "Se ha presentado un problema tratando de registrar la informacion para autenticar el usuario";
+            var mensajeTecnico = "Se ha presentado un problema INESPERADO tratando de registrar la informacion para autenticar el usuario";
 
             throw new BusinessAUTOPARKADMINException(mensajeTecnico, mensajeUsuario);
         } finally {

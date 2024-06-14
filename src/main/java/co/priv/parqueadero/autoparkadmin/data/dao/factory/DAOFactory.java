@@ -1,5 +1,8 @@
 package co.priv.parqueadero.autoparkadmin.data.dao.factory;
 
+import co.priv.parqueadero.autoparkadmin.data.dao.entity.CeldaDAO;
+import co.priv.parqueadero.autoparkadmin.data.dao.entity.EstadoCeldaDAO;
+import co.priv.parqueadero.autoparkadmin.data.dao.entity.ParqueaderoDAO;
 import co.priv.parqueadero.autoparkadmin.data.dao.entity.TipoVehiculoDAO;
 import co.priv.parqueadero.autoparkadmin.data.dao.entity.UsuarioDAO;
 import co.priv.parqueadero.autoparkadmin.data.dao.entity.VehiculoDAO;
@@ -26,4 +29,10 @@ public interface DAOFactory {
 	TipoVehiculoDAO getTipoVehiculoDAO();
 	
 	UsuarioDAO getUsuarioDAO();
+	
+	ParqueaderoDAO getParqueaderoDAO();
+	
+	EstadoCeldaDAO getEstadoCeldaDAO();
+	
+	CeldaDAO getCeldaDAO();
 }

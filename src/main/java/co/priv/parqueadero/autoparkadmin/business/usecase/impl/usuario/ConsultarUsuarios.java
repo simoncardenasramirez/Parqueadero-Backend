@@ -9,11 +9,11 @@ import co.priv.parqueadero.autoparkadmin.crosscutting.exceptions.custom.Business
 import co.priv.parqueadero.autoparkadmin.crosscutting.helpers.ObjectHelper;
 import co.priv.parqueadero.autoparkadmin.data.dao.factory.DAOFactory;
 
-public class ConsultarUsuario implements UseCaseWithReturn<UsuarioDomain, List<UsuarioDomain>> {
+public class ConsultarUsuarios implements UseCaseWithReturn<UsuarioDomain, List<UsuarioDomain>> {
 
 	private DAOFactory factory;
 
-	public ConsultarUsuario(final DAOFactory factory) {
+	public ConsultarUsuarios(final DAOFactory factory) {
 		if (ObjectHelper.getObjectHelper().isNull(factory)) {
 			var mensajeUsuario = "Se ha presentado un problema tratando de llevar a cabo la consulta de los usuarios...";
 			var mensajeTecnico = "El dao factory para consultar los usuarios llegó nulo...";
